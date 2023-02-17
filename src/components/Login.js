@@ -11,12 +11,11 @@ const Login = () => {
 
   return (
     <>
-      <div>
-        <h1>Login</h1>
-      </div>
-      <form onSubmit={handleSubmit}>
+      <article className='login-container'>
+      <form onSubmit={handleSubmit} className='login-form'>
         <label htmlfor='email'>email</label>
         <input
+          className='input'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type='email'
@@ -26,6 +25,7 @@ const Login = () => {
         />
         <label htmlfor='password'>password</label>
         <input
+          className='input'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type='password'
@@ -35,7 +35,10 @@ const Login = () => {
         />
         <button type='submit'>Login</button>
       </form>
-      <Link to='/register'>Don't have an account? Register here.</Link>
+      <Link to='/register' className='links'>
+        Don't have an account? Register here.
+      </Link>
+      </article>
     </>
   )
 }
