@@ -9,3 +9,8 @@ Research how to use authorization in React
 Creating components for user login, logout, and authorization
 
 Researching how to create a login page for users
+
+Making React Routers for navigation
+
+Found tutorial for login page:
+ - https://www.youtube.com/watch?v=Y-XW9m8qOis
