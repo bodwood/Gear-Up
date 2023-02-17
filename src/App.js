@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Layout from './components/Layout'
+import Login from './components/Login'
+import Register from './components/Register'
+import LinkPage from './components/LinkPage'
+import Unauthorized from './components/Unauthorized'
+import Home from './components/Home'
+import Editor from './components/Editor'
+import Admin from './components/Admin'
+import Lounge from './components/Lounge'
+import Missing from './components/Missing'
+
+import { Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* public routes */}
+        <Route path="login" element={<Login />}/>
+        <Route path="register" element={<Register />}/>
+        <Route path="linkpage" element={<LinkPage />}/>
+        <Route path="unauthorized" element={<Unauthorized />}/>
+
+        {/* protected routes */}
+        <Route path="/" element={<Home />}/>
+        <Route path="editor" element={<Editor />}/>
+        <Route path="admin" element={<Admin />}/>
+        <Route path="lounge" element={<Lounge />}/>
+
+        {/* 404 routes */}
+        <Route path="*" element={<Missing />}/>
+      </Route>
+    </Routes>
   );
 }
 
