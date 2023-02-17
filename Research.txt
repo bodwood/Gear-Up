@@ -21,3 +21,5 @@ Login and Register componets have their needed forms
 
 
 Researching API to use for store
+
+Found that I will need to use Sanity, Stripe and Next.js for my application
