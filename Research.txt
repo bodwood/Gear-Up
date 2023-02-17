@@ -7,3 +7,5 @@ Research how to use authorization in React
  - https://www.youtube.com/watch?v=oUZjO00NkhY Use this when building login page
 
 Creating components for user login, logout, and authorization
+
+Researching how to create a login page for users
