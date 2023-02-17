@@ -16,3 +16,5 @@ Found tutorial for login page:
  - https://www.youtube.com/watch?v=Y-XW9m8qOis
 
 Creating login components
+
+Login and Register componets have their needed forms
