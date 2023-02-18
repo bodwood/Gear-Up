@@ -27,3 +27,5 @@ Found that I will need to use Sanity, Stripe and Next.js for my application
 Research Next.js for application: found good video https://www.youtube.com/watch?v=4mOkFXyxfsU
 
 updating file to use js instead of TypeScript.js
+
+Researching how to remove TypeScript as default language
