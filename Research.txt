@@ -29,3 +29,5 @@ Research Next.js for application: found good video https://www.youtube.com/watch
 updating file to use js instead of TypeScript.js
 
 Researching how to remove TypeScript as default language
+
+trying to remove dependencies from package.json
