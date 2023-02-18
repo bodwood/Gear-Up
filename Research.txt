@@ -3,33 +3,32 @@ Capstone: Gear Head
 Project Purpose:
 This store is dedicated to selling shoes, but we can expand our product line to include other clothing products like shirts and hoodies based on demand. Our managers will have complete control over the store’s inventory through the ability to create, read, update, and delete products. Customers can browse and purchase products from our store, but they will not have the ability to modify or remove any of the products. 
 
-Research how to use authorization in React
+8:00 Research how to use authorization in React
  - https://www.youtube.com/watch?v=oUZjO00NkhY Use this when building login page
 
-Creating components for user login, logout, and authorization
+8:30 Creating components for user login, logout, and authorization
 
-Researching how to create a login page for users
+9:00 Researching how to create a login page for users
 
-Making React Routers for navigation
+10:00 Making React Routers for navigation
 
-Found tutorial for login page:
+11:00 Found tutorial for login page:
  - https://www.youtube.com/watch?v=Y-XW9m8qOis
 
-Creating login components
+11:30 Creating login components
 
-Login and Register componets have their needed forms
+12:00 Login and Register componets have their needed forms
 
+13:00 Researching API to use for store
 
-Researching API to use for store
+14:00 Found that I will need to use Sanity, Stripe and Next.js for my application
 
-Found that I will need to use Sanity, Stripe and Next.js for my application
+15:00 Research Next.js for application: found good video https://www.youtube.com/watch?v=4mOkFXyxfsU
 
-Research Next.js for application: found good video https://www.youtube.com/watch?v=4mOkFXyxfsU
+15:30 updating file to use js instead of TypeScript.js
 
-updating file to use js instead of TypeScript.js
+16:00 Researching how to remove TypeScript as default language
 
-Researching how to remove TypeScript as default language
+16:25 trying to remove dependencies from package.json
 
-trying to remove dependencies from package.json
-
-Research React with Next js
+16:55 Research React with Next js
