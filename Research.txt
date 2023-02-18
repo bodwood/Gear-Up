@@ -31,3 +31,5 @@ updating file to use js instead of TypeScript.js
 Researching how to remove TypeScript as default language
 
 trying to remove dependencies from package.json
+
+Research React with Next js
