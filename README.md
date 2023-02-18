@@ -1,0 +1,7 @@
+This project is an e-commerce store that initially focuses on selling shoes but can expand its product line to include other clothing products based on demand. The store aims to provide full CRUD functionality for managers, allowing them to create, read, update, and delete products. Customers can browse and purchase products, with the ability to view, add, and remove items from their carts, but they will not be able to modify or remove any products. The project requires tools such as VS Code, JavaScript, React, Redux, Express, Node, Chakra UI, MongoDB, Git, Formik & Yup, CSS, and HTML.
+
+The absolute minimum features for the MVP include a sign-in page for customers, with only logged-in customers being able to purchase products. The project also requires that carts are updated based on products and their prices, with products being filtered based on categories such as New & Featured, Men, Women, Kids, Accessories, and Sales.
+
+If there is time to spare, the project can be enhanced by allowing site visitors to locate physical stores using the Mapbox API, enabling customers to apply discount codes to their shopping carts, and implementing a "Favorites" feature that allows visitors to save their preferred products. These additional features require tools such as Canvas-Confetti, React-hot-Toast, and the Mapbox API.
+
+Overall, the project aims to provide a seamless and enjoyable shopping experience for customers while allowing managers to maintain complete control over the store's inventory.
