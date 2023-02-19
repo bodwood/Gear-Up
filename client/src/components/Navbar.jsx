@@ -7,10 +7,12 @@ import {
   Icon,
   Text,
   useDisclosure,
-  // Button,
-  // Stack,
+  Button,
+  Stack,
   useColorMode,
   useColorModeValue,
+  Show,
+  Hide,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
@@ -42,13 +44,6 @@ const Navbar = () => {
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent={'space-between'}>
-        <IconButton
-          size='md'
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          display={{ md: 'none' }}
-          onClick={isOpen ? onClose : onOpen}
-        />
-
         <HStack>
           <Link as={ReactLink} to='/'>
             <Flex alignItems='center'>
@@ -59,6 +54,57 @@ const Navbar = () => {
             </Flex>
           </Link>
           <HStack>
+            <Show above='md'>
+              {isOpen
+                ? null
+                : linkArray.map((e) => {
+                    const { linkName, path } = e;
+                    return (
+                      <NavLink key={linkName} path={path}>
+                        {linkName}
+                      </NavLink>
+                    );
+                  })}
+            </Show>
+          </HStack>
+        </HStack>
+        <Flex alignItems='center'>
+          <Show above='md'>
+            <NavLink>
+              <Icon
+                as={colorMode === 'light' ? MoonIcon : SunIcon}
+                alignSelf='center'
+                onClick={() => toggleColorMode()}
+              />
+            </NavLink>
+            <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
+              Sign in
+            </Button>
+            <Button
+              as={ReactLink}
+              to='/registration'
+              p={2}
+              fontSize='sm'
+              fontWeight={600}
+              _hover={{ bg: 'orange.400' }}
+              bg='orange.500'
+              color='white'
+            >
+              Sign Up
+            </Button>
+          </Show>
+        </Flex>
+        <IconButton
+          size='md'
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          display={{ md: 'none' }} // Any screen size that is medium or larger will not display the hamburger icon
+          onClick={isOpen ? onClose : onOpen}
+        />
+      </Flex>
+      {isOpen ? (
+        <Box pb={4} display={{ md: 'none' }} textAlign='right'>
+          {/* referring to the open hamburger menu */}
+          <Stack as='nav' spacing={4}>
             {linkArray.map((e) => {
               const { linkName, path } = e;
               return (
@@ -67,18 +113,9 @@ const Navbar = () => {
                 </NavLink>
               );
             })}
-          </HStack>
-        </HStack>
-        <Flex alignItems='center'>
-          <NavLink>
-            <Icon
-              as={colorMode === 'light' ? MoonIcon : SunIcon}
-              alignSelf='center'
-              onClick={() => toggleColorMode()}
-            />
-          </NavLink>
-        </Flex>
-      </Flex>
+          </Stack>
+        </Box>
+      ) : null}
     </Box>
   );
 };
