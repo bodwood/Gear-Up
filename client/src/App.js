@@ -1,8 +1,14 @@
+import { ChakeraProvider } from '@chakra-ui/react'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 function App() {
   return (
-    <div>
-      <h1>Gear Up</h1>
-    </div>
+  <ChakeraProvider>
+    <Router>
+      <Navbar />
+      <main></main>
+    </Router>
+
+  </ChakeraProvider>
   );
 }
 
