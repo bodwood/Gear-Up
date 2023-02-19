@@ -1,3 +1,21 @@
+# Gear Up
+
+#### By Bodie Wood
+
+## Technologies Used
+
+* _JavaScript_
+* _React_
+* _Chakra UI_
+* _Redux_
+* _Formik_
+* _Yup_
+* _MongoDB_
+* _Express_
+* _HTML_
+* _CSS_
+
+
 ## Project Summary: 
 
 This project is an e-commerce store that initially focuses on selling shoes but can expand its product line to include other clothing products based on demand. The store aims to provide full CRUD functionality for managers, allowing them to create, read, update, and delete products. Customers can browse and purchase products, with the ability to view, add, and remove items from their carts, but they will not be able to modify or remove any products. The project requires tools such as VS Code, JavaScript, React, Redux, Express, Node, Chakra UI, MongoDB, Git, Formik & Yup, CSS, and HTML.
