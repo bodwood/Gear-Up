@@ -12,7 +12,6 @@ import {
   useColorMode,
   useColorModeValue,
   Show,
-  Hide,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
@@ -53,46 +52,42 @@ const Navbar = () => {
               </Text>
             </Flex>
           </Link>
-          <HStack>
-            <Show above='md'>
-              {isOpen
-                ? null
-                : linkArray.map((e) => {
-                    const { linkName, path } = e;
-                    return (
-                      <NavLink key={linkName} path={path}>
-                        {linkName}
-                      </NavLink>
-                    );
-                  })}
-            </Show>
+          <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
+            {' '}
+            {/*if in mobile (base) don't display, medium screen above display */}
+            {linkArray.map((e) => {
+              const { linkName, path } = e;
+              return (
+                <NavLink key={linkName} path={path}>
+                  {linkName}
+                </NavLink>
+              );
+            })}
           </HStack>
         </HStack>
-        <Flex alignItems='center'>
-          <Show above='md'>
-            <NavLink>
-              <Icon
-                as={colorMode === 'light' ? MoonIcon : SunIcon}
-                alignSelf='center'
-                onClick={() => toggleColorMode()}
-              />
-            </NavLink>
-            <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
-              Sign in
-            </Button>
-            <Button
-              as={ReactLink}
-              to='/registration'
-              p={2}
-              fontSize='sm'
-              fontWeight={600}
-              _hover={{ bg: 'orange.400' }}
-              bg='orange.500'
-              color='white'
-            >
-              Sign Up
-            </Button>
-          </Show>
+        <Flex alignItems='center' as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
+          <NavLink>
+            <Icon
+              as={colorMode === 'light' ? MoonIcon : SunIcon}
+              alignSelf='center'
+              onClick={() => toggleColorMode()}
+            />
+          </NavLink>
+          <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
+            Sign in
+          </Button>
+          <Button
+            as={ReactLink}
+            to='/registration'
+            p={2}
+            fontSize='sm'
+            fontWeight={600}
+            _hover={{ bg: 'orange.400' }}
+            bg='orange.500'
+            color='white'
+          >
+            Sign Up
+          </Button>
         </Flex>
         <IconButton
           size='md'
@@ -113,6 +108,9 @@ const Navbar = () => {
                 </NavLink>
               );
             })}
+            <NavLink key='sign up' path='/registration'>
+              Sign Up
+            </NavLink>
           </Stack>
         </Box>
       ) : null}
