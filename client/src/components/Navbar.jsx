@@ -11,7 +11,6 @@ import {
   Stack,
   useColorMode,
   useColorModeValue,
-  Show,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
