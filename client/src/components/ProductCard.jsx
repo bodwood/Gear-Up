@@ -19,6 +19,25 @@ import { Link as ReactLink } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 
+const Rating = ({ rating, numReviews }) => {
+  const [iconSize, setIconSize] = useState('14px');
+
+  return (
+    <Flex>
+      <HStack spacing='2px'>
+        <StarIcon size={iconSize} w='14px' color='orange.500' />
+        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'orange.500' : 'grey.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'orange.500' : 'grey.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'orange.500' : 'grey.200'} />
+        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'orange.500' : 'grey.200'} />
+      </HStack>
+      <Text fontSize='md' fontWeight='bold' ml='4px'>
+        {`${numReviews} ${numReviews === 1 ? 'Review' : 'Reviews'}`}
+      </Text>
+    </Flex>
+  );
+};
+
 const ProductCard = ({ product }) => {
   return (
     <Stack
@@ -53,6 +72,9 @@ const ProductCard = ({ product }) => {
             {product.name}
           </Box>
         </Link>
+      </Flex>
+      <Flex justify-content='space-between' alignContent='center' py='2'>
+        <Rating rating={product.rating} numReviews={product.numReviews} />
       </Flex>
       <Flex justify='space-between'>
         <Box fontsize='2xl' color={useColorModeValue('gray.800', 'white')}>
