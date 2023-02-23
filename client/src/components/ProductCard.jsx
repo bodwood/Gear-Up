@@ -36,13 +36,20 @@ const ProductCard = ({ product }) => {
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Image src={product.image} alt={product.name} roundedTop='lg' />
       <Box>
-        {product.stock <= 0 && <Badge>Sold Out</Badge>}
-        {product.isNew && <Badge>New</Badge>}
+        {product.stock <= 0 && (
+          <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='red'>
+            Sold Out
+          </Badge>
+        )}
+        {product.isNew && (
+          <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
+            New
+          </Badge>
+        )}
       </Box>
-      <Flex>
-        <Link as={ReactLink} to={`/product${product._id}`}>
-        <Box>{product.name}
-          </Box>
+      <Flex mt='1' justifyContent='space-between' align='center'>
+        <Link as={ReactLink} to={`/product${product._id}`} pt='2' cursor='pointer'>
+          <Box>{product.name}</Box>
         </Link>
       </Flex>
       <Flex>
