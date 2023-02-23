@@ -54,7 +54,8 @@ const ProductCard = ({ product }) => {
       {product.isNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Image src={product.image} alt={product.name} roundedTop='lg' />
-      <Box>
+
+      <Box flex='1' maxH='5' alignItems='baseline'>
         {product.stock <= 0 && (
           <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='red'>
             Sold Out
@@ -66,9 +67,10 @@ const ProductCard = ({ product }) => {
           </Badge>
         )}
       </Box>
-      <Flex mt='1' justifyContent='space-between' align='center'>
+
+      <Flex mt='1' justifyContent='space-between' alignContent='center'>
         <Link as={ReactLink} to={`/product${product._id}`} pt='2' cursor='pointer'>
-          <Box fontSize='2xl' fontWeight='semibold' lineHeight='tight'>
+          <Box fontSize='2xl' fontWeight='semibold' as='h4' lineHeight='tight'>
             {product.name}
           </Box>
         </Link>
@@ -77,7 +79,7 @@ const ProductCard = ({ product }) => {
         <Rating rating={product.rating} numReviews={product.numReviews} />
       </Flex>
       <Flex justify='space-between'>
-        <Box fontsize='2xl' color={useColorModeValue('gray.800', 'white')}>
+        <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>
           <Box as='span' color={'grey.600'} fontSize='lg'>
             $
           </Box>
