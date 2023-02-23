@@ -49,12 +49,16 @@ const ProductCard = ({ product }) => {
       </Box>
       <Flex mt='1' justifyContent='space-between' align='center'>
         <Link as={ReactLink} to={`/product${product._id}`} pt='2' cursor='pointer'>
-          <Box>{product.name}</Box>
+          <Box fontSize='2xl' fontWeight='semibold' lineHeight='tight'>
+            {product.name}
+          </Box>
         </Link>
       </Flex>
-      <Flex>
-        <Box>
-          <Box>$</Box>
+      <Flex justify='space-between'>
+        <Box fontsize='2xl' color={useColorModeValue('gray.800', 'white')}>
+          <Box as='span' color={'grey.600'} fontSize='lg'>
+            $
+          </Box>
           {product.price.toFixed(2)}
         </Box>
         <Tooltip label='Add to cart' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
