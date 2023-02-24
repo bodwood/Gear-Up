@@ -52,6 +52,7 @@ Overall, the project aims to provide a seamless and enjoyable shopping experienc
 * 9:30 Installed MongoDB Compass for db GUI manipulation
 * 11:00 Connect MongoDB to application
 * 11:30 Convert MongoDB data to json format using express
+* 1:00 Researching API for clothing
 
 ## Known Bugs
 * _N/A_
