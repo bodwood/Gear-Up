@@ -49,6 +49,7 @@ Overall, the project aims to provide a seamless and enjoyable shopping experienc
 #### Friday, February 24, 2023
 * 8:00 Research displaying products to screen: found some great documentation on chakraui.com
 * 9:00 Create MongoDB account and build cluster
+* 9:30 Installed MongoDB Compass for db GUI manipulation
 
 ## Known Bugs
 * _N/A_
