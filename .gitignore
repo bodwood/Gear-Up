@@ -5,12 +5,12 @@
 /.pnp
 .pnp.js
 node_modules/
+.env
 # testing
 /coverage
 
 # production
 /build
-protected.txt
 
 # misc
 .DS_Store
