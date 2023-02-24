@@ -37,7 +37,7 @@ Overall, the project aims to provide a seamless and enjoyable shopping experienc
 * 11:00 Found tutorial for login page:
  - https://www.youtube.com/watch?v=Y-XW9m8qOis
 * 11:30 Creating login components
-* 12:00 Login and Register componets have their needed forms
+* 12:00 Login and Register components have their needed forms
 * 13:00 Researching API to use for store
 * 14:00 Found that I will need to use Sanity, Stripe and Next.js for my application
 * 15:00 Research Next.js for application: found good video https://www.youtube.com/watch?v=4mOkFXyxfsU
@@ -45,6 +45,10 @@ Overall, the project aims to provide a seamless and enjoyable shopping experienc
 * 16:00 Researching how to remove TypeScript as default language
 * 16:25 trying to remove dependencies from package.json
 * 16:55 Research React with Next js
+
+#### Friday, February 24, 2023
+* 8:00 Research displaying products to screen: found some great documentation on chakraui.com
+* 9:00 Create MongoDB account and build cluster
 
 ## Known Bugs
 * _N/A_
