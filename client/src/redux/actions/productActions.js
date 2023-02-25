@@ -6,6 +6,7 @@ export const getProducts = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     const { data } = await axios.get('/api/products');
+    dispatch(setProducts(data))
   } catch (error) {
     dispatch(
       setError(
