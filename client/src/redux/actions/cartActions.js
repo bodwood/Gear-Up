@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setLoading, setError, setItemAdd } from '../slices/cart';
+import { setLoading, setError, cartItemAdd } from '../slices/cart';
 
 export const addCartItem = (id, qty) => async (dispatch) => {
   dispatch(setLoading(true));
