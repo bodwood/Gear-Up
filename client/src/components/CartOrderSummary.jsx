@@ -1,6 +1,6 @@
 import { Button, Flex, Heading, useColorModeValue as mode, Stack, Text, Badge } from '@chakra-ui/react';
 import { useState } from 'react';
-import { FaArrowRight } from 'react-icons';
+import { FaArrowRight } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Link as ReactLink, useNavigate } from 'react-router-dom';
 
@@ -12,8 +12,9 @@ const CartOrderSummary = () => {
   const navigate = useNavigate;
 
   const checkoutHandler = () => {
-   
-  }
+    setButtonLoading(true);
+    navigate('/checkout');
+  };
 
   return (
     <Stack spacing='8' borderWidth='1px' rounded='lg' padding='8' w='full'>
@@ -52,7 +53,9 @@ const CartOrderSummary = () => {
         rightIcon={<FaArrowRight />}
         isLoading={buttonLoading}
         onClick={() => checkoutHandler()}
-      >Checkout</Button>
+      >
+        Checkout
+      </Button>
     </Stack>
   );
 };
