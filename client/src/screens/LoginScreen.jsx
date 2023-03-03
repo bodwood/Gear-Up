@@ -20,10 +20,18 @@ import { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
+import { useNavigate, Link as ReactLink, useLocation, useNavigation } from 'react-router-dom';
+import PasswordTextField from '../components/PasswordTextField';
+import TextField from '../components/TextField';
 
 //TODO: redefine password min length
 const LoginScreen = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const redirect = '/products';
+  const toast = useToast();
+
   const headingBR = useBreakPointValue({ base: 'xs', md: 'sm' });
   const boxBR = useBreakPointValue({ base: 'transparent', md: 'bg-surface' });
 
@@ -75,9 +83,15 @@ const LoginScreen = () => {
                   </Alert>
                 )}
                 <Stack spacing='5'>
-                 <FormControl>
-                  
-                 </FormControl>
+                  <FormControl>
+                    <TextField type='text' name='email' placeholder='janedoe@email.com' label='Email' />
+                    <PasswordTextField type='password' name='password' placeholder='***' label='Password' />
+                  </FormControl>
+                </Stack>
+                <Stack spacing='6'>
+                  <Button colorScheme='orange' size='lg' fontSize='md' isLoading={loading} type='submit'>
+                    Sign in
+                  </Button>
                 </Stack>
               </Stack>
             </Box>
