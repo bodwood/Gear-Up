@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs'
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -28,7 +29,7 @@ userSchema.methods.matchPasswords = async function(enteredPassword) {
 }
 
 //encryption of password
-userSchema.pre('save', async function(next){
+userSchema.pre('save', async function (next){
  if(!this.isModified('password')) {
   next()
  }
