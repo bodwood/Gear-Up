@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
 
 const ProductScreen = () => {
   const [amount, setAmount] = useState(1);
@@ -177,6 +178,7 @@ const ProductScreen = () => {
         )
       )}
     </Wrap>
+    
   );
 };
 export default ProductScreen;
