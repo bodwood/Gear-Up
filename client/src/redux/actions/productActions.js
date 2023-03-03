@@ -20,7 +20,7 @@ export const getProducts = () => async (dispatch) => {
   }
 };
 
-const getProduct = (id) => async(dispatch) => {
+export const getProduct = (id) => async(dispatch) => {
   dispatch(setLoading(true))
   try {
     const {data} = await axios.get(`/api/products/${id}`)
@@ -37,3 +37,4 @@ const getProduct = (id) => async(dispatch) => {
      );
   }
 }
+

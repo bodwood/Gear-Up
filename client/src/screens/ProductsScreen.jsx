@@ -37,12 +37,11 @@ const ProductsScreen = () => {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       ) : (
-        products.map((e) => {
-          const { id } = e;
+        products.map((product) => {
           return (
-            <WrapItem key={id}>
+            <WrapItem key={product._id}>
               <Center w='250px' h='550px'>
-                <ProductCard product={e} />
+                <ProductCard product={product} />
               </Center>
             </WrapItem>
           );
