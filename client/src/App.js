@@ -5,6 +5,7 @@ import CartScreen from './screens/CartScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import ProductScreen from './screens/ProductScreen';
 import Footer from './components/Footer'
+import LandingScreen from './screens/LandingScreen';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navbar />
         <main>
           <Routes>
+            <Route index path='/' element={<LandingScreen />}></Route>
             <Route path='/products' element={<ProductsScreen />}></Route>
             <Route path='/product/:id' element={<ProductScreen />}></Route>
             <Route path='/cart' element={<CartScreen />}></Route>
