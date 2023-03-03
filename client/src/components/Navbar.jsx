@@ -43,10 +43,23 @@ const Navbar = () => {
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent={'space-between'}>
         <HStack>
-          <Link as={ReactLink} to='/'>
+          <Link as={ReactLink} to='/' _hover={{textDecorationLine:'none'}}>
             <Flex alignItems='center'>
-              <Icon as={FaHelicopter} h={59} w={59} color='black' />
-              <Text fontWeight='extrabold' fontSize='20px'>
+              <Icon
+                as={FaHelicopter}
+                h={59}
+                w={59}
+                color='gray.900'
+              />
+              <Text
+                fontWeight='extrabold'
+                fontSize='20px'
+                _hover={{
+                  textDecoration: 'none !important',
+                  bgGradient: 'linear(to-l, #9C4F96, #FF6355, #FBA949, #FAE442, #8BD448, #2AA8F2)',
+                  bgClip: 'text',
+                }}
+              >
                 Gear Up
               </Text>
             </Flex>
