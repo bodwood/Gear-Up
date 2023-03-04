@@ -46,7 +46,7 @@ const LoginScreen = () => {
       } else {
         navigate(redirect);
       }
-      toast({description: 'Login successful.', status: 'success', isClosable: true})
+      toast({description: 'Login successful.', status: 'success', position: 'top', isClosable: true})
     }
   }, [userInfo, redirect, error, navigate, location.state, toast])
 
