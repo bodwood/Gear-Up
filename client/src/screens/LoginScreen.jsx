@@ -39,6 +39,17 @@ const LoginScreen = () => {
   const headingBR = useBreakpointValue({ base: 'xs', md: 'sm' });
   const boxBR = useBreakpointValue({ base: 'transparent', md: 'bg-surface' });
 
+  useEffect(() => {
+    if(userInfo) {
+      if(location.state?.from) {
+        navigate(location.state.from)
+      } else {
+        navigate(redirect);
+      }
+      toast({description: 'Login successful.', status: 'success', isClosable: true})
+    }
+  }, [userInfo, redirect, error, navigate, location.state, toast])
+
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
