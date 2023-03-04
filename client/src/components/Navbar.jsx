@@ -14,10 +14,11 @@ import {
   useToast,
   MenuList,
   Menu,
-  MenuList,
   MenuItem,
+  MenuButton,
+  MenuDivider
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg'
