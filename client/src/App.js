@@ -19,7 +19,7 @@ function App() {
             <Route path='/products' element={<ProductsScreen />}></Route>
             <Route path='/product/:id' element={<ProductScreen />}></Route>
             <Route path='/cart' element={<CartScreen />}></Route>
-            <Route path='/login' element={<LoginScreen />}></Route>
+            <Route path='/login' element={<LoginScreen />} />
           </Routes>
         </main>
         <Footer />
