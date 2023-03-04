@@ -8,7 +8,7 @@ import {
   HStack,
   Stack,
   Text,
-  useBreakPointValue,
+  useBreakpointValue,
   useColorModeValue,
   Alert,
   AlertIcon,
@@ -23,6 +23,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link as ReactLink, useLocation, useNavigation } from 'react-router-dom';
 import PasswordTextField from '../components/PasswordTextField';
 import TextField from '../components/TextField';
+import {login} from '../redux/actions/userActions'
 
 //TODO: redefine password min length
 const LoginScreen = () => {
@@ -32,8 +33,11 @@ const LoginScreen = () => {
   const redirect = '/products';
   const toast = useToast();
 
-  const headingBR = useBreakPointValue({ base: 'xs', md: 'sm' });
-  const boxBR = useBreakPointValue({ base: 'transparent', md: 'bg-surface' });
+  const user = useSelector((state) => state.user);
+  const { loading, error, userInfo } = user;
+
+  const headingBR = useBreakpointValue({ base: 'xs', md: 'sm' });
+  const boxBR = useBreakpointValue({ base: 'transparent', md: 'bg-surface' });
 
   return (
     <Formik
