@@ -12,10 +12,16 @@ import {
   useColorMode,
   useColorModeValue,
   useToast,
+  MenuList,
+  Menu,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg'
+import { MdLocalShipping, MdLogout } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { logout } from '../redux/actions/userActions';
@@ -25,20 +31,7 @@ const linkArray = [
   { linkName: 'ShoppingCart', path: '/cart' },
 ];
 
-const logoutHandler = () => {
-  dispatch(logout());
-  toast({ description: 'You have been logged out.', status: 'success', isClosable: true });
-};
-
 const NavLink = ({ path, children }) => {
-  const { isOpen, onClose, onOpen } = useDispatch();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isHovering, setIsHovering } = useState(false);
-  const user = useSelector((state) => state.user); //asks redux store what is going on with user state
-  const { userInfo } = user;
-  const dispatch = useDispatch();
-  const toast = useToast();
-
   return (
     <Link
       as={ReactLink}
@@ -54,8 +47,19 @@ const NavLink = ({ path, children }) => {
 };
 
 const Navbar = () => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const { isOpen, onClose, onOpen } = useDispatch();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isHovering, setIsHovering } = useState(false);
+  const user = useSelector((state) => state.user); //asks redux store what is going on with user state
+  const { userInfo } = user;
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    toast({ description: 'You have been logged out.', status: 'success', isClosable: true });
+  };
+
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent={'space-between'}>
@@ -98,7 +102,28 @@ const Navbar = () => {
             />
           </NavLink>
           {userInfo ? (
-            <p>logged in</p>
+            <>
+              <Menu>
+                <MenuButton px='4' py='2' transition='all 0.3s' as={Button}>
+                  {userInfo.name} <ChevronDownIcon />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem as={ReactLink} to='/profile'>
+                    <CgProfile />
+                    <Text ml='2'>Profile</Text>
+                  </MenuItem>
+                  <MenuItem as={ReactLink} to='/your-orders'>
+                    <MdLocalShipping />
+                    <Text ml='2'>Orders</Text>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem>
+                    <MdLogout />
+                    <Text ml='2'>Log out</Text>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </>
           ) : (
             <>
               <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
