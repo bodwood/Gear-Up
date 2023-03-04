@@ -11,17 +11,34 @@ import {
   Stack,
   useColorMode,
   useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { logout } from '../redux/actions/userActions';
 
 const linkArray = [
   { linkName: 'Products', path: '/products' },
   { linkName: 'ShoppingCart', path: '/cart' },
 ];
 
+const logoutHandler = () => {
+  dispatch(logout());
+  toast({ description: 'You have been logged out.', status: 'success', isClosable: true });
+};
+
 const NavLink = ({ path, children }) => {
+  const { isOpen, onClose, onOpen } = useDispatch();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isHovering, setIsHovering } = useState(false);
+  const user = useSelector((state) => state.user); //asks redux store what is going on with user state
+  const { userInfo } = user;
+  const dispatch = useDispatch();
+  const toast = useToast();
+
   return (
     <Link
       as={ReactLink}
@@ -43,14 +60,9 @@ const Navbar = () => {
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent={'space-between'}>
         <HStack>
-          <Link as={ReactLink} to='/' _hover={{textDecorationLine:'none'}}>
+          <Link as={ReactLink} to='/' _hover={{ textDecorationLine: 'none' }}>
             <Flex alignItems='center'>
-              <Icon
-                as={FaHelicopter}
-                h={59}
-                w={59}
-                color='gray.900'
-              />
+              <Icon as={FaHelicopter} h={59} w={59} color='gray.900' />
               <Text
                 fontWeight='extrabold'
                 fontSize='20px'
@@ -85,21 +97,27 @@ const Navbar = () => {
               onClick={() => toggleColorMode()}
             />
           </NavLink>
-          <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
-            Sign in
-          </Button>
-          <Button
-            as={ReactLink}
-            to='/registration'
-            p={2}
-            fontSize='sm'
-            fontWeight={600}
-            _hover={{ bg: 'orange.400' }}
-            bg='orange.500'
-            color='white'
-          >
-            Sign Up
-          </Button>
+          {userInfo ? (
+            <p>logged in</p>
+          ) : (
+            <>
+              <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
+                Sign in
+              </Button>
+              <Button
+                as={ReactLink}
+                to='/registration'
+                p={2}
+                fontSize='sm'
+                fontWeight={600}
+                _hover={{ bg: 'orange.400' }}
+                bg='orange.500'
+                color='white'
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
         </Flex>
         <IconButton
           size='md'
