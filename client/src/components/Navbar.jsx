@@ -58,7 +58,7 @@ const Navbar = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    toast({ description: 'You have been logged out.', status: 'success', isClosable: true });
+    toast({ description: 'You have been logged out.', status: 'success', position: 'top', isClosable: true });
   };
 
   return (
@@ -118,7 +118,7 @@ const Navbar = () => {
                     <Text ml='2'>Orders</Text>
                   </MenuItem>
                   <MenuDivider />
-                  <MenuItem>
+                  <MenuItem onClick={logoutHandler}>
                     <MdLogout />
                     <Text ml='2'>Log out</Text>
                   </MenuItem>
