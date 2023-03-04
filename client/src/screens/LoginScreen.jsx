@@ -20,7 +20,7 @@ import { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link as ReactLink, useLocation, useNavigation } from 'react-router-dom';
+import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
 import PasswordTextField from '../components/PasswordTextField';
 import TextField from '../components/TextField';
 import {login} from '../redux/actions/userActions'
@@ -79,8 +79,7 @@ const LoginScreen = () => {
                     flexDirection='column'
                     alignItems='center'
                     justifyContent='center'
-                    textAlign='center'
-                  >
+                    textAlign='center'>
                     <AlertIcon />
                     <AlertTitle>Oops!</AlertTitle>
                     <AlertDescription>{error}</AlertDescription>
