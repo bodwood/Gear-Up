@@ -4,6 +4,7 @@ export const initialState = {
   loading: false,
   error: null,
   userInfo: JSON.parse(localStorage.getItem('userInfo')) ?? null,
+  updateSuccess: false,
 };
 
 export const userSlice = createSlice({
@@ -13,24 +14,33 @@ export const userSlice = createSlice({
     setLoading: (state) => {
       state.loading = true;
     },
-    userLogin: (state, {payload}) => {
-     state.userInfo = payload;
-     state.error = null;
-     state.loading = false;
+    userLogin: (state, { payload }) => {
+      state.userInfo = payload;
+      state.error = null;
+      state.loading = false;
     },
     userLogout: (state) => {
-     state.loading = false;
-     state.error = null;
-     state.userInfo = null;
+      state.loading = false;
+      state.error = null;
+      state.userInfo = null;
     },
     setError: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
     },
+    updateUserProfile: (state, { payload }) => {
+      state.userInfo = payload;
+      state.updateSuccess = true;
+      state.loading = false;
+      state.error = null;
+    },
+    resetUpdate: (state) => {
+      state.updateSuccess = false;
+    },
   },
 });
 
-export const { setLoading, setError, userLogin, userLogout  } = userSlice.actions;
+export const { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate } = userSlice.actions;
 export default userSlice.reducer;
 
 export const userSelector = (state) => state.user;
