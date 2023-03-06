@@ -37,6 +37,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     if (updateSuccess) {
       toast({ description: 'Profile updated.', status: 'success', position: 'top', isClosable: true });
+      dispatch(resetUpdateSuccess());
     }
   }, [toast, updateSuccess]);
   return userInfo ? (
@@ -54,7 +55,6 @@ const ProfileScreen = () => {
           .oneOf([Yup.ref('password'), null], 'Passwords must match.'),
       })}
       onSubmit={(values) => {
-        dispatch(resetUpdateSuccess());
         dispatch(updateProfile(userInfo._id, values.name, values.email, values.password));
       }}
     >
