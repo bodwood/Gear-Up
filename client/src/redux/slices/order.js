@@ -15,11 +15,6 @@ export const orderSlice = createSlice({
     setLoading: (state) => {
       state.loading = true;
     },
-    userLogin: (state, { payload }) => {
-      state.userInfo = payload;
-      state.error = null;
-      state.loading = false;
-    },
     setError: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
@@ -31,7 +26,7 @@ export const orderSlice = createSlice({
   },
 });
 
-export const { setLoading, setError, userLogin, shippingAddressAdd } = orderSlice.actions;
+export const { setLoading, setError, shippingAddressAdd } = orderSlice.actions;
 export default orderSlice.reducer;
 
 export const orderSelector = (state) => state.order;
