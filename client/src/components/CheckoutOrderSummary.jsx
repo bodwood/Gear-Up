@@ -54,6 +54,63 @@ const CheckoutOrderSummary = () => {
       {cart.map((item) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
+
+      <Stack spacing='6'>
+        <Flex justify='space-between'>
+          <Text fontWeight='medium' color={colorMode}>
+            Subtotal
+          </Text>
+          <Text fontWeight='medium' color={colorMode}>
+            {subtotal}
+          </Text>
+        </Flex>
+        <Flex justify='space-between'>
+          <Text fontWeight='medium' color={colorMode}>
+            Shipping
+          </Text>
+          <Text fontWeight='medium' color={colorMode}>
+            {shipping() === 0 ? (
+              <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
+                Free
+              </Badge>
+            ) : (
+              `$${shipping()}`
+            )}
+          </Text>
+        </Flex>
+        <Flex justify='space-between'>
+          <Text fontSize='lg' fontWeight='semibold' color={colorMode}>
+            Total
+          </Text>
+          <Text fontSize='xl' fontWeight='extrabold' color={colorMode}>
+            ${Number(total())}
+          </Text>
+        </Flex>
+      </Stack>
+      <Box align='center'>
+        <Text fontSize='sm'>Have questions? or need help?</Text>
+        <Flex justifyContent='center' color={mode('orange.500', 'orange.100')}>
+          <Flex align='center'>
+            <ChatIcon />
+            <Text m='2'>Live Chat</Text>
+          </Flex>
+          <Flex align='center'>
+            <PhoneIcon />
+            <Text m='2'>Phone</Text>
+          </Flex>
+          <Flex align='center'>
+            <EmailIcon />
+            <Text m='2'>Email</Text>
+          </Flex>
+        </Flex>
+      </Box>
+      <Divider bg={mode('gray.400', 'gray.800')}/>
+      <Flex justifyContent='center' my='6' fontWeight='semibold'>
+        <p>or</p>
+        <Link as={ReactLink} to='/products' ml='1'>
+          Continue Shopping
+        </Link>
+      </Flex>
     </Stack>
   );
 };
