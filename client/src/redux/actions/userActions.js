@@ -26,6 +26,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  dispatch(resetUpdate());
   localStorage.removeItem('userInfo');
   dispatch(userLogout());
 };
@@ -67,7 +68,7 @@ export const updateProfile = (id, name, email, password) => async (dispatch, get
       },
     };
 
-    const { data } = await axios.put(`/api/users/profile${id}`, { _id: id, name, email, password }, config);
+    const { data } = await axios.put(`/api/users/profile/${id}`, { _id: id, name, email, password }, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(updateUserProfile(data));
   } catch (error) {
