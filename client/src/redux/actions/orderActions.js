@@ -9,9 +9,10 @@ export const setShippingAddressError = (value) => (dispatch) => {
   dispatch(setError(value));
 };
 
-export const createOrder = (order) => async (getState) => {
+export const createOrder = (order) => async (dispatch, getState) => {
   const {
     order: { shippingAddress },
+    user: { userInfo },
   } = getState();
 
   const preparedOrder = { ...order, shippingAddress };
@@ -36,6 +37,6 @@ export const createOrder = (order) => async (getState) => {
   }
 };
 
-export const resetOrder = () => async(dispatch) => {
-  dispatch(clearOrder())
-}
+export const resetOrder = () => async (dispatch) => {
+  dispatch(clearOrder());
+};
