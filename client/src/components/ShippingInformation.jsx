@@ -12,14 +12,29 @@ const ShippingInformation = () => {
   return (
     <Formik
       initialValues={{ address: '', postalCode: '', city: '', country: '' }}
-      validationSchema=
-      {Yup.object({
+      validationSchema={Yup.object({
         address: Yup.string().required('This field is required.').min('This address is too short.'),
         postalCode: Yup.string().required('This field is required.').min('This postal code is too short.'),
         city: Yup.string().required('This field is required.').min('This city is too short.'),
         country: Yup.string().required('This field is required.').min('This country is too short.'),
-      })}>
-       {(formik) => <VStack as='form'></VStack>}
+      })}
+    >
+      {(formik) => (
+        <VStack as='form'>
+          <FormControl onChange={() => {}}>
+            <TextField name='address' placeholder='Street Address' label='Street Address' />
+            <Flex>
+              <Box flex='1' mr='10'>
+                <TextField name='postalCode' placeholder='Postal Code' label='Postal Code' type='number' />
+              </Box>
+              <Box flex='2'>
+                <TextField name='city' placeholder='City' label='City' />
+              </Box>
+            </Flex>
+            <TextField name='country' placeholder='Country' label='Country' />
+          </FormControl>
+        </VStack>
+      )}
     </Formik>
   );
 };
