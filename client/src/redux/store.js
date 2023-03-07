@@ -9,7 +9,7 @@ const reducer = combineReducers({
  products,
  cart,
  user,
- order
+ order,
 });
 
 export default configureStore({

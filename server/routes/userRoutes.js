@@ -1,5 +1,6 @@
 import express from 'express';
 import User from '../models/User.js';
+import Order from '../models/Order.js';
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import protectRoute from '../middleware/authMiddleware.js';
@@ -27,18 +28,18 @@ const loginUser = asyncHandler(async (req, res) => {
       createdAt: user.createdAt,
     });
   } else {
-    res.status(401);
-    throw new Error('Invalid email or password');
+    res.status(401).send('Invalid Email or Password');
+    throw new Error('User not found.');
   }
 });
 
+// POST register user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
   if (userExists) {
-    res.status(400);
-    throw new Error('We already have an account with that email address.');
+    res.status(400).send('We already have an account with that email address.');
   }
 
   const user = await User.create({
@@ -54,10 +55,11 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       token: genToken(user._id),
+      createdAt: user.createdAt,
     });
   } else {
-    res.json(400);
-    throw new Error('Invalid user data');
+    res.status(400).send('We could not register you.');
+    throw new Error('Something went wrong. Please check your data and try again.');
   }
 });
 
@@ -70,6 +72,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (req.body.password) {
       user.password = req.body.password;
     }
+
     const updatedUser = await user.save();
 
     res.json({
@@ -82,11 +85,22 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error('User not found.');
+  }
+});
+
+const getUserOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.params.id });
+  if (orders) {
+    res.json(orders);
+  } else {
+    res.status(404);
+    throw new Error('No Orders found');
   }
 });
 
 userRoutes.route('/login').post(loginUser);
 userRoutes.route('/register').post(registerUser);
 userRoutes.route('/profile/:id').put(protectRoute, updateUserProfile);
+userRoutes.route('/:id').get(protectRoute, getUserOrders);
 export default userRoutes;

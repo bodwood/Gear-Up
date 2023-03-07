@@ -22,7 +22,9 @@ const CheckoutScreen = () => {
           <Heading fontSize='2xl' fontWeight='extrabold'>
             Shipping Information
           </Heading>
-          <Stack spacing='6'><ShippingInformation /></Stack>
+          <Stack spacing='6'>
+            <ShippingInformation />
+          </Stack>
         </Stack>
         <Flex direction='column' align='center' flex='1'>
           <CheckoutOrderSummary />
@@ -33,4 +35,5 @@ const CheckoutScreen = () => {
     <Navigate to='/login' replace={true} state={{ from: location }} />
   );
 };
+
 export default CheckoutScreen;

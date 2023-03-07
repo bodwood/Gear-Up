@@ -28,7 +28,7 @@ const LandingScreen = () => (
       >
         <Stack spacing={{ base: '8', lg: '10' }}>
           <Stack spacing={{ base: '2', lg: '4' }}>
-            <Flex alignItem='center'>
+            <Flex alignItems='center'>
             </Flex>
             <Text fontSize='4xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
               Gear Up

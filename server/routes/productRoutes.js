@@ -1,5 +1,6 @@
 import express from 'express';
 import Product from '../models/Product.js';
+
 const productRoutes = express.Router();
 
 const getProducts = async (req, res) => {
@@ -9,6 +10,7 @@ const getProducts = async (req, res) => {
 
 const getProduct = async (req, res) => {
   const product = await Product.findById(req.params.id);
+
   if (product) {
     res.json(product);
   } else {

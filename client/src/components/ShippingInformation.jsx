@@ -12,16 +12,16 @@ const ShippingInformation = () => {
   const [formStateChanged, setFormStateChanged] = useState(false);
 
   const setErrorState = (input, data) => {
-   if(!input) {
-    dispatch(setShippingAddress(data))
-   }
-   if((!formStateChanged && !input) || (formStateChanged && input)) {
-    return;
-   } else {
-    setFormStateChanged(input)
-    dispatch(setShippingAddressError(input))
-   }
-  }
+    if (!input) {
+      dispatch(setShippingAddress(data));
+    }
+    if ((!formStateChanged && !input) || (formStateChanged && input)) {
+      return;
+    } else {
+      setFormStateChanged(input);
+      dispatch(setShippingAddressError(input));
+    }
+  };
 
   return (
     <Formik
@@ -67,8 +67,8 @@ const ShippingInformation = () => {
                 <Stack pr='10' spacing={{ base: '8', md: '10' }} flex='1.5'>
                   <Box>
                     <Radio value='true'>
-                      <Text fontWeight='bold'>Express $14.99</Text>
-                      <Text>Ships in 24 hours.</Text>
+                      <Text fontWeight='bold'>Express 14.99</Text>
+                      <Text>Dispatched in 24 hours.</Text>
                     </Radio>
                   </Box>
                   <Stack spacing='6'>Express</Stack>
@@ -76,8 +76,8 @@ const ShippingInformation = () => {
                 <Radio value='false'>
                   <Tooltip label='Free shipping for orders of $1000 or more!'>
                     <Box>
-                      <Text fontWeight='bold'>Standard Shipping $4.99</Text>
-                      <Text>Ships in 2-4 days.</Text>
+                      <Text fontWeight='bold'>Standard $4.99</Text>
+                      <Text>Dispatched in 2 - 3 days</Text>
                     </Box>
                   </Tooltip>
                 </Radio>
@@ -89,4 +89,5 @@ const ShippingInformation = () => {
     </Formik>
   );
 };
+
 export default ShippingInformation;

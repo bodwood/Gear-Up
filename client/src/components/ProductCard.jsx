@@ -109,7 +109,7 @@ const ProductCard = ({ product }) => {
           <Box as='span' color={'grey.600'} fontSize='lg'>
             $
           </Box>
-          {product.price.toFixed(2)}
+          {product.price}
         </Box>
         <Tooltip label='Add to cart' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
           <Button variant='ghost' display='flex' disabled={product.stock <= 0} onClick={() => addItem(product._id)}>
