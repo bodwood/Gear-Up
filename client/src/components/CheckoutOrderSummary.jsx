@@ -13,12 +13,17 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as ReactLink } from 'react-router-dom';
 import { PhoneIcon, EmailIcon, ChatIcon } from '@chakra-ui/icons';
-import { createOrder } from '../redux/actions/orderActions';
+import { createOrder, resetOrder } from '../redux/actions/orderActions';
 import { useEffect, useState, useCallback } from 'react';
 import CheckoutItem from './CheckoutItem';
-import PayPalButton from './PayPalButton'
+import PayPalButton from './PayPalButton';
+import PaymentSuccessModal from './PaymentSuccessModal';
+import PaymentErrorModal from './PaymentErrorModal';
+import { resetCart } from '../redux/actions/cartActions';
 
 const CheckoutOrderSummary = () => {
+  const { onClose: onErrorClose, onOpen: onErrorOpen, isOpen: isErrorOpen } = useDisclosure();
+  const { onClose: onSuccessClose, onOpen: onSuccessOpen, isOpen: isSuccessOpen } = useDisclosure();
   const colorMode = mode('gray.600', 'gray.400');
   const cartItems = useSelector((state) => state.cart);
   const { cart, subtotal, expressShipping } = cartItems;
@@ -42,19 +47,32 @@ const CheckoutOrderSummary = () => {
   );
 
   useEffect(() => {
-    if(!error) {
-      setButtonDisabled(false)
-    } else{
-      setButtonDisabled(true)
+    if (!error) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
     }
-  }, [error, shippingAddress, total, expressShipping, shipping, dispatch])
+  }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
-  const onPaymentSuccess = () => {
-    alert('order success');
+  const onPaymentSuccess = (data) => {
+    dispatch(
+      createOrder({
+        orderItems: cart,
+        shippingAddress,
+        paymentMethod: data.paymentSource,
+        paymentDetails: data,
+        shippingPrice: shipping(),
+        totalPrice: total(),
+        userInfo,
+      })
+    );
+    dispatch(resetOrder());
+    dispatch(resetCart());
+    //openSuccess
   };
 
   const onPaymentError = () => {
-    alert('order error');
+    //onError
   };
 
   return (
@@ -95,7 +113,12 @@ const CheckoutOrderSummary = () => {
             ${Number(total())}
           </Text>
         </Flex>
-        <PayPalButton total={total} onPaymentSuccess={onPaymentSuccess} onPaymentError={onPaymentError} disabled={buttonDisabled}/>
+        <PayPalButton
+          total={total}
+          onPaymentSuccess={onPaymentSuccess}
+          onPaymentError={onPaymentError}
+          disabled={buttonDisabled}
+        />
       </Stack>
       <Box align='center'>
         <Text fontSize='sm'>Have questions? or need help?</Text>
@@ -114,13 +137,15 @@ const CheckoutOrderSummary = () => {
           </Flex>
         </Flex>
       </Box>
-      <Divider bg={mode('gray.400', 'gray.800')}/>
+      <Divider bg={mode('gray.400', 'gray.800')} />
       <Flex justifyContent='center' my='6' fontWeight='semibold'>
         <p>or</p>
         <Link as={ReactLink} to='/products' ml='1'>
           Continue Shopping
         </Link>
       </Flex>
+      <PaymentErrorModal onClose={onErrorClose} onOpen={onErrorOpen} isOpen={isErrorOpen} />
+      <PaymentSuccessModal onClose={onSuccessClose} onOpen={onSuccessOpen} isOpen={isSuccessOpen} />
     </Stack>
   );
 };
