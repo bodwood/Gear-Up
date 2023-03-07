@@ -100,6 +100,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
+
   try {
     const config = {
       headers: {
@@ -116,7 +117,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'An unexpected error has occurred. Please try again later.'
+          : 'An unexpected error has occured. Please try again later.'
       )
     );
   }
