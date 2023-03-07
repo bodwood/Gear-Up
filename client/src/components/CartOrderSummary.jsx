@@ -1,9 +1,8 @@
-import { Button, Flex, Heading, useColorModeValue as mode, Stack, Text, Badge } from '@chakra-ui/react';
+import { Button, Flex, Heading, Stack, Text, useColorModeValue as mode, Badge } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Link as ReactLink, useNavigate } from 'react-router-dom';
-
 const CartOrderSummary = () => {
   const [buttonLoading, setButtonLoading] = useState();
   const standardShipping = Number(4.99).toFixed(2);
@@ -15,7 +14,6 @@ const CartOrderSummary = () => {
     setButtonLoading(true);
     navigate('/checkout');
   };
-
   return (
     <Stack spacing='8' borderWidth='1px' rounded='lg' padding='8' w='full'>
       <Heading size='md'>Order Summary</Heading>
