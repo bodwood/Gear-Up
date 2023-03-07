@@ -17,6 +17,7 @@ import { createOrder, resetOrder } from '../redux/actions/orderActions';
 import { useEffect, useState, useCallback } from 'react';
 import CheckoutItem from './CheckoutItem';
 import PayPalButton from './PayPalButton';
+
 import { resetCart } from '../redux/actions/cartActions';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,6 +51,8 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
+
+
     dispatch(
       createOrder({
         orderItems: cart,
@@ -65,6 +68,7 @@ const CheckoutOrderSummary = () => {
     dispatch(resetCart());
     navigate('/order-success');
   };
+
 
   const onPaymentError = (error) => {
     toast({
@@ -148,5 +152,4 @@ const CheckoutOrderSummary = () => {
     </Stack>
   );
 };
-
 export default CheckoutOrderSummary;
