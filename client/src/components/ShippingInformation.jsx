@@ -27,10 +27,10 @@ const ShippingInformation = () => {
     <Formik
       initialValues={{ address: '', postalCode: '', city: '', country: '' }}
       validationSchema={Yup.object({
-        address: Yup.string().required('This field is required.').min(1, 'This address is too short.'),
-        postalCode: Yup.string().required('This field is required.').min(1, 'This postal code is too short.'),
-        city: Yup.string().required('This field is required.').min(1, 'This city is too short.'),
-        country: Yup.string().required('This field is required.').min(1, 'This country is too short.'),
+        address: Yup.string().required('This field is required.').min(2, 'This address is too short.'),
+        postalCode: Yup.string().required('This field is required.').min(2, 'This postal code is too short.'),
+        city: Yup.string().required('This field is required.').min(2, 'This city is too short.'),
+        country: Yup.string().required('This field is required.').min(2, 'This country is too short.'),
       })}
     >
       {(formik) => (
