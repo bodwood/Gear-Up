@@ -1,4 +1,5 @@
 import { Flex, Select, useColorModeValue as mode, Image, Box, Text, Spacer, Divider } from '@chakra-ui/react';
+import { Link as ReactLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addCartItem } from '../redux/actions/cartActions';
 
@@ -19,7 +20,7 @@ const CheckoutItem = ({ cartItem }) => {
           loading='lazy'
         />
         <Flex direction='column' align='stretch' flex='1' mx='2' spacing='4'>
-          <Text noOfLines='2' maxW='150px'>
+          <Text noOfLines='2' maxW='150px' as={ReactLink} to={`/product/${cartItem.id}`}>
             {name}
           </Text>
           <Spacer />
