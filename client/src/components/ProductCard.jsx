@@ -59,11 +59,12 @@ const ProductCard = ({ product }) => {
       rounded='lg'
       shadow='lg'
       position='relative'
+
     >
       {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Link as={ReactLink} to={`/product/${product._id}`}>
-      <Image className='products-images' src={product.image} alt={product.name} roundedTop='sm' />
+        <Image className='products-images' src={product.image} alt={product.name} roundedTop='sm' />
       </Link>
 
       <Box flex='1' maxH='5' alignItems='baseline'>
@@ -80,9 +81,11 @@ const ProductCard = ({ product }) => {
       </Box>
 
       <Flex mt='1' justifyContent='space-between' alignContent='center'>
-        <Link as={ReactLink} to={`/product/${product._id}`} pt='2' cursor='pointer'>
+        <Link as={ReactLink} to={`/product/${product._id}`} pt='2' cursor='pointer' style={{textDecoration: 'none'}}>
           <Box fontSize='2xl' fontWeight='semibold' as='h4' lineHeight='tight'>
+            <Tooltip label={`View ${product.name}`}>
             {product.name}
+            </Tooltip>
           </Box>
         </Link>
       </Flex>

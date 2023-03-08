@@ -31,7 +31,7 @@ const LandingScreen = () => (
         <Stack spacing={{ base: '8', lg: '10' }}>
           <Stack spacing={{ base: '2', lg: '4' }}>
             <Flex alignItems='center'></Flex>
-            <Text fontSize='4xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
+            <Text fontSize='4xl' fontWeight='bold'>
               Gear Up
             </Text>
             <Heading size='xl' fontWeight='normal'>
@@ -42,13 +42,12 @@ const LandingScreen = () => (
             <Link
               as={ReactLink}
               to='/products'
-              color={useColorModeValue('orange.500', 'orange.300')}
               fontWeight='bold'
               fontSize='lg'
             >
               Discover now
             </Link>
-            <Icon color={useColorModeValue('orange.500', 'orange.300')} as={FaArrowRight} />
+            <Icon as={FaArrowRight} />
           </HStack>
         </Stack>
       </Box>
@@ -73,14 +72,14 @@ const LandingScreen = () => (
       </Flex>
     </Stack>
 
-    <Center mt='10%'>
-      <Text fontSize='5xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
+    <Center mt='5%'>
+      <Text fontSize='5xl' fontWeight='bold'>
         Women's History Month
       </Text>
     </Center>
     <Center>
-      <Text fontSize='2xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
-        Celebrate and Save
+      <Text fontSize='2xl' fontWeight='bold'>
+        Celebrating Women
       </Text>
     </Center>
 
@@ -98,28 +97,29 @@ const LandingScreen = () => (
       </Flex>
     </Stack>
 
-    <Text>Products</Text>
-    <HStack>
-      <Flex flex='1' overflow='hidden'>
-        <Image
-          src='https://cdn.filtergrade.com/wp-content/uploads/2021/11/08145643/pexels-kyle-karbowski-9715552-1229x1536.jpg'
-          alt='Lovely Image'
-          fallback={<Skeleton />}
-          maxH='800px'
-          minW='300px'
-          objectFit='cover'
-        />
-        <Image
-          display={{ base: 'none', sm: 'initial' }}
-          src='https://images.pexels.com/photos/3929034/pexels-photo-3929034.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='Lovely Image'
-          fallback={<Skeleton />}
-          maxH='800px'
-          minW='300px'
-          objectFit='cover'
-        />
-      </Flex>
-    </HStack>
+    <Text mt='5%' mb='1%' fontSize='2xl' ml='1%' fontWeight='semibold'>
+      Trending Now
+    </Text>
+    <Flex flex='1' overflow='hidden' justifyContent='center'>
+      <Image
+        src='https://cdn.filtergrade.com/wp-content/uploads/2021/11/08145643/pexels-kyle-karbowski-9715552-1229x1536.jpg'
+        alt='Lovely Image'
+        fallback={<Skeleton />}
+        maxH='800px'
+        minW='800px'
+        objectFit='cover'
+      />
+      <Image
+        display={{ base: 'none', sm: 'initial' }}
+        src='https://images.pexels.com/photos/10371092/pexels-photo-10371092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        alt='Lovely Image'
+        fallback={<Skeleton />}
+        maxH='800px'
+        minW='800px'
+        objectFit='cover'
+        ml='2%'
+      />
+    </Flex>
   </Box>
 );
 
