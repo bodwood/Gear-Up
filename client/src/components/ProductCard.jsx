@@ -16,11 +16,11 @@ import {
 } from '@chakra-ui/react';
 
 import { FiShoppingCart } from 'react-icons/fi';
-import { Link as ReactLink } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart, addCartItem } from '../redux/actions/cartActions';
+import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
 
 const Rating = ({ rating, numberOfReviews }) => {
   const [iconSize, setIconSize] = useState('14px');
@@ -44,6 +44,7 @@ const Rating = ({ rating, numberOfReviews }) => {
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const cartInfo = useSelector((state) => state.cart);
   const { cart } = cartInfo;
@@ -65,6 +66,7 @@ const ProductCard = ({ product }) => {
     }
   };
 
+
   return (
     <Stack
       p='2'
@@ -79,7 +81,9 @@ const ProductCard = ({ product }) => {
     >
       {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
+      <Link as={ReactLink} to={`/product/${product._id}`}>
       <Image src={product.image} alt={product.name} roundedTop='lg' />
+      </Link>
 
       <Box flex='1' maxH='5' alignItems='baseline'>
         {product.stock <= 0 && (
