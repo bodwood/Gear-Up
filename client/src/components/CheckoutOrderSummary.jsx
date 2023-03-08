@@ -51,8 +51,6 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
-
-
     dispatch(
       createOrder({
         orderItems: cart,
@@ -68,7 +66,6 @@ const CheckoutOrderSummary = () => {
     dispatch(resetCart());
     navigate('/order-success');
   };
-
 
   const onPaymentError = (error) => {
     toast({
