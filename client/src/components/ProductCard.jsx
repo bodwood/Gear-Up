@@ -22,29 +22,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCart, addCartItem } from '../redux/actions/cartActions';
 import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
 
-const Rating = ({ rating, numberOfReviews }) => {
-  const [iconSize, setIconSize] = useState('14px');
-
-  return (
-    <Flex>
-      <HStack spacing='2px'>
-        <StarIcon size={iconSize} w='14px' color='orange.500' />
-        <StarIcon size={iconSize} w='14px' color={rating >= 2 ? 'orange.500' : 'grey.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 3 ? 'orange.500' : 'grey.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 4 ? 'orange.500' : 'grey.200'} />
-        <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'orange.500' : 'grey.200'} />
-      </HStack>
-      <Text fontSize='md' fontWeight='bold' ml='4px'>
-        {`${numberOfReviews} ${numberOfReviews === 1 ? 'Review' : 'Reviews'}`}
-      </Text>
-    </Flex>
-  );
-};
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const toast = useToast();
-  const navigate = useNavigate();
 
   const cartInfo = useSelector((state) => state.cart);
   const { cart } = cartInfo;
@@ -73,8 +54,8 @@ const ProductCard = ({ product }) => {
       spacing='3px'
       bg={useColorModeValue('white', 'gray.800')}
       minW='240px'
-      h='450px'
-      borderWidth='1px'
+      h='500px'
+      borderWidth='0px'
       rounded='lg'
       shadow='lg'
       position='relative'
@@ -82,7 +63,7 @@ const ProductCard = ({ product }) => {
       {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Link as={ReactLink} to={`/product/${product._id}`}>
-      <Image src={product.image} alt={product.name} roundedTop='lg' />
+      <Image className='products-images' src={product.image} alt={product.name} roundedTop='sm' />
       </Link>
 
       <Box flex='1' maxH='5' alignItems='baseline'>
@@ -104,9 +85,6 @@ const ProductCard = ({ product }) => {
             {product.name}
           </Box>
         </Link>
-      </Flex>
-      <Flex justify-content='space-between' alignContent='center' py='2'>
-        <Rating rating={product.rating} numberOfReviews={product.numberOfReviews} />
       </Flex>
       <Flex justify='space-between'>
         <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>

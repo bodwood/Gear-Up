@@ -10,16 +10,18 @@ import {
   Stack,
   useColorModeValue,
   Text,
+  VStack,
+  Center,
 } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <Box maxW='8xl' mx='auto' px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }} minH='6xl'>
+  <Box maxW='12xl' mx='auto' px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }} minH='6xl'>
     <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }}>
       <Box
-        width={{ lg: 'sm' }}
+        width={{ sm: 'sm' }}
         transform={{ base: 'translateY(-50%)', lg: 'none' }}
         bg={{ base: useColorModeValue('orange.50', 'gray.700'), lg: 'transparent' }}
         mx={{ base: '6', md: '8', lg: '0' }}
@@ -28,8 +30,7 @@ const LandingScreen = () => (
       >
         <Stack spacing={{ base: '8', lg: '10' }}>
           <Stack spacing={{ base: '2', lg: '4' }}>
-            <Flex alignItems='center'>
-            </Flex>
+            <Flex alignItems='center'></Flex>
             <Text fontSize='4xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
               Gear Up
             </Text>
@@ -53,7 +54,7 @@ const LandingScreen = () => (
       </Box>
       <Flex flex='1' overflow='hidden'>
         <Image
-          src='https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80'
+          src='https://images.pexels.com/photos/7228053/pexels-photo-7228053.jpeg'
           alt='Lovely Image'
           fallback={<Skeleton />}
           maxH='450px'
@@ -63,7 +64,7 @@ const LandingScreen = () => (
         />
         <Image
           display={{ base: 'none', sm: 'initial' }}
-          src='https://images.unsplash.com/photo-1589156206699-bc21e38c8a7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80'
+          src='https://cdn.shopify.com/s/files/1/1173/7128/products/DRESSFRONT-14_400x.jpg?v=1630107768'
           alt='Lovely Image'
           fallback={<Skeleton />}
           maxH='450px'
@@ -71,6 +72,54 @@ const LandingScreen = () => (
         />
       </Flex>
     </Stack>
+
+    <Center mt='10%'>
+      <Text fontSize='5xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
+        Women's History Month
+      </Text>
+    </Center>
+    <Center>
+      <Text fontSize='2xl' fontWeight='bold' color={useColorModeValue('orange.500', 'orange.300')}>
+        Celebrate and Save
+      </Text>
+    </Center>
+
+    <Stack mt='10'>
+      <Flex>
+        <Image
+          src='https://images.pexels.com/photos/3325917/pexels-photo-3325917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          alt='Lovely Image'
+          fallback={<Skeleton />}
+          maxH='350px'
+          maxW='100vw'
+          width='100%'
+          objectFit='cover'
+        />
+      </Flex>
+    </Stack>
+
+    <Text>Products</Text>
+    <HStack>
+      <Flex flex='1' overflow='hidden'>
+        <Image
+          src='https://cdn.filtergrade.com/wp-content/uploads/2021/11/08145643/pexels-kyle-karbowski-9715552-1229x1536.jpg'
+          alt='Lovely Image'
+          fallback={<Skeleton />}
+          maxH='800px'
+          minW='300px'
+          objectFit='cover'
+        />
+        <Image
+          display={{ base: 'none', sm: 'initial' }}
+          src='https://images.pexels.com/photos/3929034/pexels-photo-3929034.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          alt='Lovely Image'
+          fallback={<Skeleton />}
+          maxH='800px'
+          minW='300px'
+          objectFit='cover'
+        />
+      </Flex>
+    </HStack>
   </Box>
 );
 
