@@ -79,7 +79,7 @@ const Navbar = () => {
         <HStack>
           <Link as={ReactLink} to='/' _hover={{ textDecorationLine: 'none' }}>
             <Flex alignItems='center'>
-              <Icon as={FaHelicopter} h={59} w={59} color='gray.900' />
+            
               <Text
                 fontWeight='extrabold'
                 fontSize='20px'

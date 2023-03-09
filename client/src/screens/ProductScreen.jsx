@@ -19,11 +19,12 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { MinusIcon, StarIcon, SmallAddIcon } from '@chakra-ui/icons';
-import { BiPackage, BiCheckShield, BiSupport } from 'react-icons/bi';
+import { BiPackage, BiCheckShield, BiLeaf } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
+import {TbRulerMeasure} from 'react-icons/tb'
 import Footer from '../components/Footer';
 
 const ProductScreen = () => {
@@ -125,19 +126,19 @@ const ProductScreen = () => {
                     <Flex alignItems='center'>
                       <BiPackage size='20px' />
                       <Text fontWeight='medium' fontSize='sm' ml='2'>
-                        Free shipping if order is above $1000
+                        Free shipping on orders over $50
                       </Text>
                     </Flex>
                     <Flex alignItems='center'>
-                      <BiCheckShield size='20px' />
+                      <TbRulerMeasure size='20px' />
                       <Text fontWeight='medium' fontSize='sm' ml='2'>
-                        24/7 support
+                        True Size
                       </Text>
                     </Flex>
                     <Flex alignItems='center'>
-                      <BiSupport size='20px' />
+                      <BiLeaf size='20px' />
                       <Text fontWeight='medium' fontSize='sm' ml='2'>
-                        2 year extended warranty
+                        Climate Pledge
                       </Text>
                     </Flex>
                   </Stack>
