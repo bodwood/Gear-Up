@@ -20,16 +20,11 @@
 ![Landing Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Landing-Page.JPG?raw=true)
 
 
-<div style="display: flex; justify-content: space-between;">
-  <div style="text-align:center">
-    <h2>Products</h2>
-    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true" alt="Products" style="width: 100%;">
-  </div>
-  <div style="text-align:center">
-    <h2>Product Details</h2>
-    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true" alt="Product Details" style="width: 90%;">
-  </div>
-</div>
+
+Products            |  Product Detail
+:-------------------------:|:-------------------------:
+![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true)  |  ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true)
+
 
 <div style="display: flex; justify-content: space-between;">
   <div style="text-align:center">
@@ -53,9 +48,7 @@ The easiest way I can think of solving this is using the tables included in GitH
 
 To your specific example it would look something like this:
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)  |  ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true)
+
 
 ## Project Summary: 
 
