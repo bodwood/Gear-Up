@@ -27,6 +27,9 @@ Product Details
 Shopping Cart
 ![Shopping Cart](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)
 
+Shipping Information
+![Shopping Cart](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true)
+
 
 ## Project Summary: 
 
