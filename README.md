@@ -16,7 +16,7 @@
 * _CSS_
 
 
-[![Landing Page](./client/public/images/Landing-Page.JPG)]
+![Landing Page](/client/public/images/Landing-Page.JPG)
 
 
 ## Project Summary: 
