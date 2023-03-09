@@ -47,6 +47,16 @@
   <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/2023-03-09_11-09-27_AdobeExpress_AdobeExpress.gif?raw=true" alt="Project Demo" style="width: 90%;">
 </div>
 
+
+
+The easiest way I can think of solving this is using the tables included in GitHub's flavored markdown.
+
+To your specific example it would look something like this:
+
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)  |  ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true)
+
 ## Project Summary: 
 
 This project is an e-commerce store that initially focuses on selling shoes but can expand its product line to include other clothing products based on demand. The store aims to provide full CRUD functionality for managers, allowing them to create, read, update, and delete products. Customers can browse and purchase products, with the ability to view, add, and remove items from their carts, but they will not be able to modify or remove any products. The project requires tools such as VS Code, JavaScript, React, Redux, Express, Node, Chakra UI, MongoDB, Git, Formik & Yup, CSS, and HTML.
