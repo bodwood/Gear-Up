@@ -19,36 +19,29 @@
 
 ![Landing Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Landing-Page.JPG?raw=true)
 
+<br/>
 
+## Products and Product Detail Pages
 
 Products            |  Product Detail
 :-------------------------:|:-------------------------:
 ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true)  |  ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true)
 
+<br/>
 
-<div style="display: flex; justify-content: space-between;">
-  <div style="text-align:center">
-    <h2>Checkout Screen</h2>
-    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true" alt="Checkout Screen" style="width: 100%;">
-  </div>
-  <div style="text-align:center">
-    <h2>Shipping Screen</h2>
-    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true" alt="Shipping Screen" style="width: 90%;">
-  </div>
-</div>
+## Shopping Cart and Shipping Info Pages
 
-<div style="text-align: center; margin-top: 10%; margin-bottom: 7%; font-weight: bold;">
-  <h2>Project Demo</h2>
-  <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/2023-03-09_11-09-27_AdobeExpress_AdobeExpress.gif?raw=true" alt="Project Demo" style="width: 90%;">
-</div>
+Shopping Cart            |  Shipping Info
+:-------------------------:|:-------------------------:
+![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)  |  ![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true)
 
+<br/>
 
+## Demo
 
-The easiest way I can think of solving this is using the tables included in GitHub's flavored markdown.
+![](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/2023-03-09_11-09-27_AdobeExpress_AdobeExpress.gif?raw=true)
 
-To your specific example it would look something like this:
-
-
+<br/>
 
 ## Project Summary: 
 
