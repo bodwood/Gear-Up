@@ -31,8 +31,6 @@
   </div>
 </div>
 
-
-
 <div style="display: flex; justify-content: space-between;">
   <div style="text-align:center">
     <h2>Checkout Screen</h2>
@@ -45,10 +43,8 @@
 </div>
 
 <div style="text-align: center; margin-top: 10%; margin-bottom: 7%; font-weight: bold;">
-<h2>Project Demo</h2>
-
-![Project Demo](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/2023-03-09_11-09-27_AdobeExpress_AdobeExpress.gif?raw=true)
-
+  <h2>Project Demo</h2>
+  <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/2023-03-09_11-09-27_AdobeExpress_AdobeExpress.gif?raw=true" alt="Project Demo" style="width: 90%;">
 </div>
 
 ## Project Summary: 
