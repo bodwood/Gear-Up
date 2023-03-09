@@ -72,6 +72,10 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (req.body.password) {
       user.password = req.body.password;
     }
+    if(req.body.isAdmin)
+    {
+      user.isAdmin = req.body.isAdmin;
+    }
 
     const updatedUser = await user.save();
 
@@ -103,4 +107,8 @@ userRoutes.route('/login').post(loginUser);
 userRoutes.route('/register').post(registerUser);
 userRoutes.route('/profile/:id').put(protectRoute, updateUserProfile);
 userRoutes.route('/:id').get(protectRoute, getUserOrders);
+
+
+
+
 export default userRoutes;

@@ -15,6 +15,8 @@ import {
   CardHeader,
   CardBody,
   StackDivider,
+  Radio,
+  RadioGroup
 } from '@chakra-ui/react';
 import TextField from '../components/TextField';
 import PasswordTextField from '../components/PasswordTextField';
@@ -26,6 +28,7 @@ import { updateProfile, resetUpdateSuccess } from '../redux/actions/userActions'
 import { useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
+import { setAdmin } from '../redux/actions/userActions'
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -53,9 +56,13 @@ const ProfileScreen = () => {
           .min(1, 'Password is too short - must contain at least 1 character')
           .required('Password is required')
           .oneOf([Yup.ref('password'), null], 'Passwords must match.'),
+        adminPassword: Yup.string()
+          .min(1, 'Password is too short - must contain at least 1 character')
+          .required('Password is required')
+          .oneOf([Yup.ref('password'), null], 'Passwords must match.'),
       })}
       onSubmit={(values) => {
-        dispatch(updateProfile(userInfo._id, values.name, values.email, values.password));
+        dispatch(updateProfile(userInfo._id, values.name, values.email, values.password, values.isAdmin));
       }}
     >
       {(formik) => (
@@ -97,6 +104,40 @@ const ProfileScreen = () => {
                         placeholder='********'
                         label='Confirm password'
                       />
+                      <PasswordTextField
+                        type='password'
+                        name='adminPassword'
+                        placeholder='***********'
+                        label='Admin Password'
+                      />
+
+
+                      <RadioGroup
+                        defaultValue='false'
+                        onChange={(e) => {
+                          dispatch(setAdmin(e));
+                        }}
+                      >
+                        <Stack direction={{ base: 'column', lg: 'row' }} align={{ lg: 'flex-start' }}>
+                          <Stack pr='10' spacing={{ base: '8', md: '10' }} flex='1.5'>
+                            <Box>
+                              <Radio value='true'>
+                                <Text fontWeight='bold'>Admin</Text>
+                                <Text>True</Text>
+                              </Radio>
+                            </Box>
+                            <Stack spacing='6'>Express</Stack>
+                          </Stack>
+                          <Radio value='false'>
+                              <Box>
+                                <Text fontWeight='bold'>Admin</Text>
+                                <Text>False</Text>
+                              </Box>
+                          </Radio>
+                        </Stack>
+                      </RadioGroup>
+
+
                     </FormControl>
                   </Stack>
                   <Stack spacing='6'>

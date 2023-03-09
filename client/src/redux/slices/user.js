@@ -43,10 +43,15 @@ export const userSlice = createSlice({
       state.orders = payload;
       state.loading = false;
     },
+    setAdminUser: (state, { payload }) => {
+      state.userInfo.isAdmin = payload;
+      state.loading = false;
+      state.error = null;
+    },
   },
 });
 
-export const { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate, setUserOrders } =
+export const { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate, setUserOrders, setAdminUser } =
   userSlice.actions;
 export default userSlice.reducer;
 

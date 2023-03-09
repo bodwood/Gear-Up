@@ -7,6 +7,7 @@ import {
   updateUserProfile,
   resetUpdate,
   setUserOrders,
+  setAdminUser,
 } from '../slices/user';
 
 export const login = (email, password) => async (dispatch) => {
@@ -62,7 +63,7 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-export const updateProfile = (id, name, email, password) => async (dispatch, getState) => {
+export const updateProfile = (id, name, email, password, isAdmin) => async (dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
@@ -75,7 +76,7 @@ export const updateProfile = (id, name, email, password) => async (dispatch, get
       },
     };
 
-    const { data } = await axios.put(`/api/users/profile/${id}`, { _id: id, name, email, password }, config);
+    const { data } = await axios.put(`/api/users/profile/${id}`, { _id: id, name, email, password, isAdmin }, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(updateUserProfile(data));
   } catch (error) {
@@ -121,4 +122,8 @@ export const getUserOrders = () => async (dispatch, getState) => {
       )
     );
   }
+};
+
+export const setAdmin = (value) => async (dispatch) => {
+  dispatch(setAdminUser(value));
 };
