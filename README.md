@@ -15,20 +15,38 @@
 * _HTML_
 * _CSS_
 
-Landing Page
+## Landing Page
+
 ![Landing Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Landing-Page.JPG?raw=true)
 
-Products Page
-![Products Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true)
 
-Product Details
-![Product Details](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true)
+<div style="display: flex; justify-content: space-between;">
+  <div style="text-align:center">
+    <h2>Products</h2>
+    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true" alt="Checkout Screen" style="width: 100%;">
+  </div>
+  <div style="text-align:center">
+    <h2>Product Details</h2>
+    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true" alt="Shipping Screen" style="width: 90%;">
+  </div>
+</div>
 
-Shopping Cart
-![Shopping Cart](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)
 
-Shipping Information
-![Shopping Cart](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true)
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="text-align:center">
+    <h2>Checkout Screen</h2>
+    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true" alt="Checkout Screen" style="width: 100%;">
+  </div>
+  <div style="text-align:center">
+    <h2>Shipping Screen</h2>
+    <img src="https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Shipping-Screen.JPG?raw=true" alt="Shipping Screen" style="width: 90%;">
+  </div>
+</div>
+
+<div style="display: flex; justify-content: space-between">
+
+</div>
 
 
 ## Project Summary: 
