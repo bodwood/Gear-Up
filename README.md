@@ -15,8 +15,17 @@
 * _HTML_
 * _CSS_
 
+Landing Page
+![Landing Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Landing-Page.JPG?raw=true)
 
-`![Landing Page](./client/public/images/Landing-Page.JPG)`
+Products Page
+![Products Page](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Products.JPG?raw=true)
+
+Product Details
+![Product Details](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Product-Page.JPG?raw=true)
+
+Shopping Cart
+![Shopping Cart](https://github.com/bodwood/Gear-Up/blob/main/client/public/images/Checkout-Screen.JPG?raw=true)
 
 
 ## Project Summary: 
