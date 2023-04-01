@@ -18,8 +18,22 @@ import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <Box maxW='12xl' mx='auto' px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }} minH='6xl'>
-    <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }}>
+  <Box maxW='12xl' mx='auto' px={{ base: '0' }} py={{ base: '0' }} minH='6xl'>
+    <Stack>
+      <Flex>
+        <Image
+          src='https://images.pexels.com/photos/3325917/pexels-photo-3325917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          alt='Woman looking through sheet'
+          fallback={<Skeleton />}
+          maxH='350px'
+          maxW='100vw'
+          width='100%'
+          objectFit='cover'
+        />
+      </Flex>
+    </Stack>
+
+    <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }} mt='10'>
       <Box
         width={{ sm: 'sm' }}
         transform={{ base: 'translateY(-50%)', lg: 'none' }}
@@ -39,12 +53,7 @@ const LandingScreen = () => (
             </Heading>
           </Stack>
           <HStack spacing='3'>
-            <Link
-              as={ReactLink}
-              to='/products'
-              fontWeight='bold'
-              fontSize='lg'
-            >
+            <Link as={ReactLink} to='/products' fontWeight='bold' fontSize='lg'>
               Discover now
             </Link>
             <Icon as={FaArrowRight} />
@@ -53,7 +62,7 @@ const LandingScreen = () => (
       </Box>
       <Flex flex='1' overflow='hidden'>
         <Image
-          src='https://images.pexels.com/photos/7228053/pexels-photo-7228053.jpeg'
+          src='https://i.etsystatic.com/34448913/r/il/7a369d/3716250128/il_794xN.3716250128_2pn7.jpg'
           alt='Woman on stairs'
           fallback={<Skeleton />}
           maxH='450px'
@@ -63,35 +72,10 @@ const LandingScreen = () => (
         />
         <Image
           display={{ base: 'none', sm: 'initial' }}
-          src='https://cdn.shopify.com/s/files/1/1173/7128/products/DRESSFRONT-14_400x.jpg?v=1630107768'
+          src='https://i.etsystatic.com/34448913/r/il/c9002b/3727265694/il_794xN.3727265694_18pg.jpg'
           alt='Woman in white sweatpants'
           fallback={<Skeleton />}
           maxH='450px'
-          objectFit='cover'
-        />
-      </Flex>
-    </Stack>
-
-    <Center mt='5%'>
-      <Text fontSize='5xl' fontWeight='bold'>
-        Women's History Month
-      </Text>
-    </Center>
-    <Center>
-      <Text fontSize='2xl' fontWeight='bold'>
-        Celebrating Women
-      </Text>
-    </Center>
-
-    <Stack mt='10'>
-      <Flex>
-        <Image
-          src='https://images.pexels.com/photos/3325917/pexels-photo-3325917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='Woman looking through sheet'
-          fallback={<Skeleton />}
-          maxH='350px'
-          maxW='100vw'
-          width='100%'
           objectFit='cover'
         />
       </Flex>
