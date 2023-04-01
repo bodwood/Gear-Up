@@ -16,6 +16,7 @@ const updateLocalStorage = (cart) => {
   localStorage.setItem('cartItems', JSON.stringify(cart));
   localStorage.setItem('subtotal', JSON.stringify(calculateSubtotal(cart)));
 };
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,

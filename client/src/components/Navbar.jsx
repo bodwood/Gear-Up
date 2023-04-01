@@ -94,7 +94,6 @@ const Navbar = () => {
             </Flex>
           </Link>
           <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
-            {' '}
             {/*if in mobile (base) don't display, medium screen above display */}
             {linkArray.map((e) => {
               const { linkName, path } = e;

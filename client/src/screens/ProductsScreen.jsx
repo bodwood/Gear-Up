@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 const ProductsScreen = () => {
   const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.products);
+  const productList = useSelector((state) => state.products); 
   const { loading, error, products } = productList;
 
   useEffect(() => {

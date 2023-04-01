@@ -54,7 +54,7 @@ const LandingScreen = () => (
       <Flex flex='1' overflow='hidden'>
         <Image
           src='https://images.pexels.com/photos/7228053/pexels-photo-7228053.jpeg'
-          alt='Lovely Image'
+          alt='Woman on stairs'
           fallback={<Skeleton />}
           maxH='450px'
           minW='300px'
@@ -64,7 +64,7 @@ const LandingScreen = () => (
         <Image
           display={{ base: 'none', sm: 'initial' }}
           src='https://cdn.shopify.com/s/files/1/1173/7128/products/DRESSFRONT-14_400x.jpg?v=1630107768'
-          alt='Lovely Image'
+          alt='Woman in white sweatpants'
           fallback={<Skeleton />}
           maxH='450px'
           objectFit='cover'
@@ -87,7 +87,7 @@ const LandingScreen = () => (
       <Flex>
         <Image
           src='https://images.pexels.com/photos/3325917/pexels-photo-3325917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='Lovely Image'
+          alt='Woman looking through sheet'
           fallback={<Skeleton />}
           maxH='350px'
           maxW='100vw'
@@ -103,7 +103,7 @@ const LandingScreen = () => (
     <Flex flex='1' overflow='hidden' justifyContent='center'>
       <Image
         src='https://cdn.filtergrade.com/wp-content/uploads/2021/11/08145643/pexels-kyle-karbowski-9715552-1229x1536.jpg'
-        alt='Lovely Image'
+        alt='Woman in black outfit'
         fallback={<Skeleton />}
         maxH='800px'
         minW='800px'
@@ -112,7 +112,7 @@ const LandingScreen = () => (
       <Image
         display={{ base: 'none', sm: 'initial' }}
         src='https://images.pexels.com/photos/10371092/pexels-photo-10371092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-        alt='Lovely Image'
+        alt='Women blue sweatsuit'
         fallback={<Skeleton />}
         maxH='800px'
         minW='800px'

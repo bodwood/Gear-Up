@@ -16,8 +16,6 @@ import {
 } from '@chakra-ui/react';
 
 import { FiShoppingCart } from 'react-icons/fi';
-import { StarIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart, addCartItem } from '../redux/actions/cartActions';
 import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
