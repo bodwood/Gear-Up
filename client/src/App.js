@@ -13,11 +13,12 @@ import CheckoutScreen from './screens/CheckoutScreen';
 import OrderSuccessScreen from './screens/OrderSuccessScreen'; 
 import YourOrdersScreen from './screens/YourOrdersScreen';
 
+
 function App() {
   return (
     <ChakraProvider>
       <Router>
-        <Navbar />
+        <Navbar/>
         <main>
           <Routes>
             <Route index path='/' element={<LandingScreen />}></Route>

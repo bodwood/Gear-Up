@@ -74,19 +74,20 @@ const Navbar = () => {
   };
 
   return (
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-      <Flex h={16} alignItems='center' justifyContent={'space-between'}>
+    <Box className='navbar' bgGradient={'linear(to-b, #25211e 0, rgba(37,33,30,0) 100%)'} px={4}>
+      <Flex h={40} alignItems='center' justifyContent={'space-between'}>
         <HStack>
           <Link as={ReactLink} to='/' _hover={{ textDecorationLine: 'none' }}>
             <Flex alignItems='center'>
-            
               <Text
                 fontWeight='extrabold'
                 fontSize='20px'
+                opacity='1.0 !important'
                 _hover={{
                   textDecoration: 'none !important',
                   bgGradient: 'linear(to-l, #9C4F96, #FF6355, #FBA949, #FAE442, #8BD448, #2AA8F2)',
                   bgClip: 'text',
+                  opacity: '1',
                 }}
               >
                 Gear Up

@@ -18,7 +18,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <Box maxW='12xl' mx='auto' px={{ base: '0' }} py={{ base: '0' }} minH='6xl'>
+  <Box maxW='12xl' mx='auto' px={{ base: '0' }} py={{ base: '0' }} minH='6xl' >
     <Stack>
       <Flex>
         <Image
@@ -29,6 +29,7 @@ const LandingScreen = () => (
           maxW='100vw'
           width='100%'
           objectFit='cover'
+          paddingBottom='50px'
         />
       </Flex>
     </Stack>
