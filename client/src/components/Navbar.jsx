@@ -74,8 +74,8 @@ const Navbar = () => {
   };
 
   return (
-    <Box className='navbar' bgGradient={'linear(to-b, #25211e 0, rgba(37,33,30,0) 100%)'} px={4}>
-      <Flex h={40} alignItems='center' justifyContent={'space-between'}>
+    <Box className='navbar' px={4}>
+      <Flex h={24} alignItems='center' justifyContent={'space-between'}>
         <HStack>
           <Link as={ReactLink} to='/' _hover={{ textDecorationLine: 'none' }}>
             <Flex alignItems='center'>
@@ -90,7 +90,7 @@ const Navbar = () => {
                   opacity: '1',
                 }}
               >
-                Gear Up
+                ClayByKady
               </Text>
             </Flex>
           </Link>

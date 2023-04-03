@@ -18,22 +18,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <Box maxW='12xl' mx='auto' px={{ base: '0' }} py={{ base: '0' }} minH='6xl' >
-    <Stack>
-      <Flex>
-        <Image
-          src='https://images.pexels.com/photos/3325917/pexels-photo-3325917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          alt='Woman looking through sheet'
-          fallback={<Skeleton />}
-          maxH='350px'
-          maxW='100vw'
-          width='100%'
-          objectFit='cover'
-          paddingBottom='50px'
-        />
-      </Flex>
-    </Stack>
-
+  <Box maxW='12xl' mx='auto' px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }} minH='6xl'>
     <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }} mt='10'>
       <Box
         width={{ sm: 'sm' }}
@@ -44,17 +29,22 @@ const LandingScreen = () => (
         py={{ base: '6', md: '8', lg: '12' }}
       >
         <Stack spacing={{ base: '8', lg: '10' }}>
-          <Stack spacing={{ base: '2', lg: '4' }}>
+          <Stack spacing={{ base: '2', lg: '4' }} marginLeft='4%'>
             <Flex alignItems='center'></Flex>
-            <Text fontSize='4xl' fontWeight='bold'>
-              Gear Up
+            <Text
+              fontSize='4xl'
+              fontWeight='bold'
+              bgGradient='linear(to-l, #9C4F96, #FF6355, #FBA949, #FAE442, #8BD448, #2AA8F2)'
+              bgClip='text'
+            >
+              Clay by Kady
             </Text>
             <Heading size='xl' fontWeight='normal'>
-              Refresh your kicks
+              Handmade polymer clay earrings
             </Heading>
           </Stack>
           <HStack spacing='3'>
-            <Link as={ReactLink} to='/products' fontWeight='bold' fontSize='lg'>
+            <Link as={ReactLink} to='/products' fontWeight='bold' fontSize='lg' marginLeft='4%'>
               Discover now
             </Link>
             <Icon as={FaArrowRight} />
@@ -70,6 +60,7 @@ const LandingScreen = () => (
           minW='300px'
           objectFit='cover'
           flex='1'
+          marginRight='1%'
         />
         <Image
           display={{ base: 'none', sm: 'initial' }}
@@ -87,7 +78,7 @@ const LandingScreen = () => (
     </Text>
     <Flex flex='1' overflow='hidden' justifyContent='center'>
       <Image
-        src='https://cdn.filtergrade.com/wp-content/uploads/2021/11/08145643/pexels-kyle-karbowski-9715552-1229x1536.jpg'
+        src='https://i.etsystatic.com/34448913/r/il/4537fe/3763820739/il_794xN.3763820739_5bv1.jpg'
         alt='Woman in black outfit'
         fallback={<Skeleton />}
         maxH='800px'
@@ -96,7 +87,7 @@ const LandingScreen = () => (
       />
       <Image
         display={{ base: 'none', sm: 'initial' }}
-        src='https://images.pexels.com/photos/10371092/pexels-photo-10371092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        src='https://i.etsystatic.com/34448913/r/il/86c77b/3763848649/il_794xN.3763848649_f28k.jpg'
         alt='Women blue sweatsuit'
         fallback={<Skeleton />}
         maxH='800px'
