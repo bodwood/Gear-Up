@@ -28,8 +28,7 @@ const loginUser = asyncHandler(async (req, res) => {
       createdAt: user.createdAt,
     });
   } else {
-    res.status(401).send('Invalid Email or Password');
-    throw new Error('User not found.');
+    res.status(401).send('Invalid Email or Password.');
   }
 });
 
@@ -58,8 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
       createdAt: user.createdAt,
     });
   } else {
-    res.status(400).send('We could not register you.');
-    throw new Error('Something went wrong. Please check your data and try again.');
+    res.status(400).send('Invalid user data.');
   }
 });
 
