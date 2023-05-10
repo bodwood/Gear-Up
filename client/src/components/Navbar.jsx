@@ -22,7 +22,7 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@c
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg'
-import { MdLocalShipping, MdLogout } from 'react-icons/md';
+import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { logout } from '../redux/actions/userActions';
@@ -129,6 +129,15 @@ const Navbar = () => {
                     <MdLocalShipping />
                     <Text ml='2'>Orders</Text>
                   </MenuItem>
+                  {userInfo.isAdmin === 'true' && (
+                    <>
+                    <MenuDivider/>
+                    <MenuItem as={ReactLink} to={'/admin-console'}>
+                      <MdOutlineAdminPanelSettings />
+                      <Text ml='2'>Admin Console</Text>
+                    </MenuItem>
+                    </>
+                  )}
                   <MenuDivider />
                   <MenuItem onClick={logoutHandler}>
                     <MdLogout />

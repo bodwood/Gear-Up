@@ -49,7 +49,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     };
     //Product review is pushed to the reviews of the product and the number of reviews is updated.
     product.reviews.push(review);
-    product.numberOfReviews = product.reviews.length();
+    product.numberOfReviews = product.reviews.length;
     //Product rating is updated to include all product reviews, to display the average rating.
     product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
 
