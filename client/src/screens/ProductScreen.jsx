@@ -17,16 +17,18 @@ import {
   Button,
   SimpleGrid,
   useToast,
+  Input,
+  Tooltip,
+  Textarea,
 } from '@chakra-ui/react';
 import { MinusIcon, StarIcon, SmallAddIcon } from '@chakra-ui/icons';
 import { BiPackage, BiCheckShield, BiLeaf } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct, resetProductError } from '../redux/actions/productActions';
+import { getProduct, resetProductError, createProductReview } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
 import { TbRulerMeasure } from 'react-icons/tb';
-import Footer from '../components/Footer';
-import { createProductReview, resetProductError } from '../redux/actions/productActions';
+
 
 const ProductScreen = () => {
   const [comment, setComment] = useState('');
@@ -175,20 +177,59 @@ const ProductScreen = () => {
                   If the user has already reviewed the product, display the tooltip.
                   If the user hasn't reviewed the product, show nothing.
                 */}
-                <ToolTip label={hasUserReviewed() ? 'You have already reviewed this product.' : ''} fontSize='md' />
-                {/*
+                <Tooltip label={hasUserReviewed() ? 'You have already reviewed this product.' : ''} fontSize='md'>
+                  {/*
                   Button is disabled if the user has already reviewed the product.
                   Toggle setReviewBoxOpen to true or false depending on if the button has been clicked or not.
                 */}
-                <Button
-                  disabled={hasUserReviewed()}
-                  my='20mx'
-                  w='140px'
-                  colorScheme='orange'
-                  onClick={() => setReviewBoxOpen(!reviewBoxOpen)}
-                >
-                  Write a review
-                </Button>
+                  <Button
+                    disabled={hasUserReviewed()}
+                    my='20mx'
+                    w='140px'
+                    colorScheme='orange'
+                    onClick={() => setReviewBoxOpen(!reviewBoxOpen)}
+                  >
+                    Write a review
+                  </Button>
+                </Tooltip>
+                {reviewBoxOpen && (
+                  <Stack mb='20px'>
+                    <Wrap>
+                      <HStack spacing='2px'>
+                        <Button variant='outline' onClick={() => setRating(1)}>
+                          <StarIcon color='orange.500' />
+                        </Button>
+                        <Button variant='outline' onClick={() => setRating(2)}>
+                          <StarIcon color={rating >= 2 ? 'orange.500' : 'orange.200'} />
+                        </Button>{' '}
+                        <Button variant='outline' onClick={() => setRating(3)}>
+                          <StarIcon color={rating >= 3 ? 'orange.500' : 'orange.200'} />
+                        </Button>{' '}
+                        <Button variant='outline' onClick={() => setRating(4)}>
+                          <StarIcon color={rating >= 4 ? 'orange.500' : 'orange.200'} />
+                        </Button>{' '}
+                        <Button variant='outline' onClick={() => setRating(5)}>
+                          <StarIcon color={rating >= 5 ? 'orange.500' : 'orange.200'} />
+                        </Button>
+                      </HStack>
+                    </Wrap>
+                    <Input
+                      onChange={(e) => {
+                        setTitle(e.target.value);
+                      }}
+                      placeholder='Review title (optional)'
+                    />
+                    <Textarea
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
+                      placeholder={`The ${product.name} is...`}
+                    />
+                    <Button w='140px' colorScheme='orange' onClick={() => onSubmit()}>
+                      Publish review
+                    </Button>
+                  </Stack>
+                )}
               </>
             )}
             <Stack>
