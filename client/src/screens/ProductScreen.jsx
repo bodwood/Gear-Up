@@ -21,27 +21,40 @@ import {
 import { MinusIcon, StarIcon, SmallAddIcon } from '@chakra-ui/icons';
 import { BiPackage, BiCheckShield, BiLeaf } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../redux/actions/productActions';
+import { getProduct, resetProductError } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
-import {TbRulerMeasure} from 'react-icons/tb'
+import { TbRulerMeasure } from 'react-icons/tb';
 import Footer from '../components/Footer';
+import { createProductReview, resetProductError } from '../redux/actions/productActions';
 
 const ProductScreen = () => {
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(1);
+  const [title, setTitle] = useState('');
+  const [reviewBoxOpen, setReviewBoxOpen] = useState(false);
   const [amount, setAmount] = useState(1);
   let { id } = useParams();
   const toast = useToast();
   //redux
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  const { loading, error, product } = products;
+  const { loading, error, product, reviewSend } = products;
 
   const cartContent = useSelector((state) => state.cart);
   const { cart } = cartContent;
 
+  const user = useSelector((state) => state.user);
+  const { userInfo } = user;
+
   useEffect(() => {
     dispatch(getProduct(id));
-  }, [dispatch, id, cart]);
+    if (reviewSend) {
+      toast({ description: 'Product review saved', status: 'success', isClosable: true });
+      dispatch(resetProductError());
+      setReviewBoxOpen(false);
+    }
+  }, [dispatch, id, cart, reviewSend]);
 
   const changeAmount = (input) => {
     if (input === 'plus') {
@@ -52,10 +65,18 @@ const ProductScreen = () => {
     }
   };
 
+  //Check to see if the user has already reviewed the product.
+  const hasUserReviewed = () => product.reviews.some((item) => item.user === userInfo._id);
+
+  //Sends review to createProductReview
+  const onSubmit = () => {
+    dispatch(createProductReview(product._id, userInfo._id, comment, rating, title));
+  };
+
   const addItem = () => {
     dispatch(addCartItem(product._id, amount));
-    toast({description: 'Item has been added.' , status: 'success', isClosable: true})
-  }
+    toast({ description: 'Item has been added.', status: 'success', isClosable: true });
+  };
 
   return (
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
@@ -147,39 +168,58 @@ const ProductScreen = () => {
               <Flex direction='column' align='center' flex='1' _dark={{ bg: 'gray.900' }}>
                 <Image mb='30px' src={product.image} alt={product.name} />
               </Flex>
-              </Stack>
-
-              <Stack>
-                <Text fontSize='xl' fontWeight='bold'>
-                  Reviews
-                </Text>
-                <SimpleGrid minChildWidth='300px' spacingX='40px' spacingY='20px'>
-                  {product.reviews.map((review) => (
-                    <Box key={review._id}>
-                      <Flex spacing='2px' alignItems='center'>
-                        <StarIcon color='orange.500' />
-                        <StarIcon color={product.rating >= 2 ? 'orange.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 3 ? 'orange.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 4 ? 'orange.500' : 'gray.200'} />
-                        <StarIcon color={product.rating >= 5 ? 'orange.500' : 'gray.200'} />
-                        <Text fontWeight='semibold' ml='4px'>
-                          {review.title && review.title}
-                        </Text>
-                      </Flex>
-                      <Box py='12px'>{review.comment}</Box>
-                      <Text fontSize='sm' color='gray.400'>
-                        by {review.name}, {new Date(review.createdAt).toDateString()}
+            </Stack>
+            {userInfo && (
+              <>
+                {/*
+                  If the user has already reviewed the product, display the tooltip.
+                  If the user hasn't reviewed the product, show nothing.
+                */}
+                <ToolTip label={hasUserReviewed() ? 'You have already reviewed this product.' : ''} fontSize='md' />
+                {/*
+                  Button is disabled if the user has already reviewed the product.
+                  Toggle setReviewBoxOpen to true or false depending on if the button has been clicked or not.
+                */}
+                <Button
+                  disabled={hasUserReviewed()}
+                  my='20mx'
+                  w='140px'
+                  colorScheme='orange'
+                  onClick={() => setReviewBoxOpen(!reviewBoxOpen)}
+                >
+                  Write a review
+                </Button>
+              </>
+            )}
+            <Stack>
+              <Text fontSize='xl' fontWeight='bold'>
+                Reviews
+              </Text>
+              <SimpleGrid minChildWidth='300px' spacingX='40px' spacingY='20px'>
+                {product.reviews.map((review) => (
+                  <Box key={review._id}>
+                    <Flex spacing='2px' alignItems='center'>
+                      <StarIcon color='orange.500' />
+                      <StarIcon color={product.rating >= 2 ? 'orange.500' : 'gray.200'} />
+                      <StarIcon color={product.rating >= 3 ? 'orange.500' : 'gray.200'} />
+                      <StarIcon color={product.rating >= 4 ? 'orange.500' : 'gray.200'} />
+                      <StarIcon color={product.rating >= 5 ? 'orange.500' : 'gray.200'} />
+                      <Text fontWeight='semibold' ml='4px'>
+                        {review.title && review.title}
                       </Text>
-                    </Box>
-                  ))}
-                </SimpleGrid>
-              </Stack>
-
+                    </Flex>
+                    <Box py='12px'>{review.comment}</Box>
+                    <Text fontSize='sm' color='gray.400'>
+                      by {review.name}, {new Date(review.createdAt).toDateString()}
+                    </Text>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            </Stack>
           </Box>
         )
       )}
     </Wrap>
-    
   );
 };
 export default ProductScreen;
