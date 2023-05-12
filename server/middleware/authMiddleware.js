@@ -25,4 +25,14 @@ const protectRoute = asyncHandler(async (req, res, next) => {
   }
 });
 
-export default protectRoute;
+//Checks if admin has a valid token to allow for CRUD functionality
+const admin = (req, res, next) => {
+  if(req.user && req.user.isAdmin !== 'false') {
+    next()
+  } else {
+    res.status(401)
+    throw new Error('Not authorized as an admin.')
+  }
+}
+
+export {protectRoute, admin};
