@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const UsersTab = () => {
-  return <div>UsersTab</div>;
-};
+ return <div>UsersTab</div>
+}
 
 export default UsersTab;

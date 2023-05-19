@@ -1,12 +1,12 @@
-import { Box, Stack, Heading, Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import {Box, Stack, Heading, Tabs, TabList, Tab, TabPanels, TabPanel} from '@chakra-ui/react'
+import {Navigate, useLocation} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const AdminConsoleScreen = () => {
-  const user = useSelector((state) => state.user);
-  const { userInfo } = user;
-  const location = useLocation();
-
+ const user = useSelector((state) => state.user);
+ const {userInfo} = user;
+ const location = useLocation();
+ 
   return userInfo && userInfo.isAdmin === 'true' ? (
     <Box p='20px' minH='100vh'>
       <Stack direction={{ base: 'column', lg: 'row' }} align={{ lg: 'flex-start' }}>
@@ -22,7 +22,9 @@ const AdminConsoleScreen = () => {
               <Tab>Orders</Tab>
             </TabList>
             <TabPanels>
-              <TabPanel>{/* <UserTab /> */}</TabPanel>
+             <TabPanel>
+              {/* <UserTab /> */}
+             </TabPanel>
             </TabPanels>
           </Tabs>
         </Stack>
@@ -31,5 +33,6 @@ const AdminConsoleScreen = () => {
   ) : (
     <Navigate to='/login' replace={true} state={{ from: location }} />
   );
-};
-export default AdminConsoleScreen;
+  
+}
+export default AdminConsoleScreen

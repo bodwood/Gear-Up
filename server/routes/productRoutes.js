@@ -2,7 +2,7 @@ import express from 'express';
 import Product from '../models/Product.js';
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
-import { protectRoute } from '../middleware/authMiddleware.js';
+import {protectRoute} from '../middleware/authMiddleware.js';
 
 const productRoutes = express.Router();
 
@@ -23,6 +23,7 @@ const getProduct = async (req, res) => {
 };
 
 const createProductReview = asyncHandler(async (req, res) => {
+
   //From request body we are grabbing the data needed for finding the body and the user.
   const { rating, comment, userId, title } = req.body;
   const product = await Product.findById(req.params.id);
