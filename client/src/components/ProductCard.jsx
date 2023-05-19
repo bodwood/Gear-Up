@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCart, addCartItem } from '../redux/actions/cartActions';
 import { useNavigate, Link as ReactLink, useLocation } from 'react-router-dom';
 
-
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const toast = useToast();
@@ -44,7 +43,6 @@ const ProductCard = ({ product }) => {
       });
     }
   };
-
 
   return (
     <Stack

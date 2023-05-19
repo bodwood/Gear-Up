@@ -16,32 +16,35 @@ import {
   Menu,
   MenuItem,
   MenuButton,
-  MenuDivider
+  MenuDivider,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Link as ReactLink } from 'react-router-dom';
 import { FaHelicopter } from 'react-icons/fa';
-import { CgProfile } from 'react-icons/cg'
-import { MdLocalShipping, MdLogout } from 'react-icons/md';
+import { CgProfile } from 'react-icons/cg';
+import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { logout } from '../redux/actions/userActions';
 import { FiShoppingCart } from 'react-icons/fi';
 
 const ShoppingCartIcon = () => {
-  const cartInfo = useSelector((state) => state.cart)
+  const cartInfo = useSelector((state) => state.cart);
   const { cart } = cartInfo;
-  return <Flex>
-    <Text as='sub' fontSize='xs'>
-    {cart.length}
-    </Text>
-    <Icon ml='-1.5' as={FiShoppingCart} h='4' w='7' alignSelf='center' />
-    Cart</Flex>
-}
+  return (
+    <Flex>
+      <Text as='sub' fontSize='xs'>
+        {cart.length}
+      </Text>
+      <Icon ml='-1.5' as={FiShoppingCart} h='4' w='7' alignSelf='center' />
+      Cart
+    </Flex>
+  );
+};
 
 const linkArray = [
   { linkName: 'Products', path: '/products' },
-  { linkName: <ShoppingCartIcon /> , path: '/cart' },
+  { linkName: <ShoppingCartIcon />, path: '/cart' },
 ];
 
 const NavLink = ({ path, children }) => {
@@ -129,6 +132,15 @@ const Navbar = () => {
                     <MdLocalShipping />
                     <Text ml='2'>Orders</Text>
                   </MenuItem>
+                  {userInfo.isAdmin === 'true' && (
+                    <>
+                      <MenuDivider />
+                      <MenuItem as={ReactLink} to={'/admin-console'}>
+                        <MdOutlineAdminPanelSettings />
+                        <Text ml='2'>Admin Console</Text>
+                      </MenuItem>
+                    </>
+                  )}
                   <MenuDivider />
                   <MenuItem onClick={logoutHandler}>
                     <MdLogout />
