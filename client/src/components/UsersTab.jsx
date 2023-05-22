@@ -89,7 +89,7 @@ const UsersTab = () => {
                       <Td>
                         {/* Button allows user to delete other users */}
                         <Button
-                          disabled={user._id === userInfo.id}
+                          disabled={user._id === userInfo._id}
                           variant='outline'
                           onClick={() => openDeleteConfirmBox(user)}
                         >
