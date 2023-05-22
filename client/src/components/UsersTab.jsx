@@ -22,6 +22,7 @@ import { CheckCircleIcon, DeleteIcon } from '@chakra-ui/icons';
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers, deleteUser, resetErrorAndRemoval } from '../redux/actions/adminActions';
+import ConfirmRemovalAlert from './ConfirmRemovalAlert';
 
 const UsersTab = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,12 +36,12 @@ const UsersTab = () => {
   const toast = useToast();
 
   useEffect(() => {
-    dispatch(getallUsers());
+    dispatch(getAllUsers());
     dispatch(resetErrorAndRemoval());
     if (userRemoval) {
       toast({ description: 'User has been removed.', status: 'success', isClosable: true });
     }
-  }, [userRemoval]);
+  }, [userRemoval, dispatch, toast]);
 
   const openDeleteConfirmBox = (user) => {
     setUserToDelete(user);
@@ -86,7 +87,7 @@ const UsersTab = () => {
                       <Td>{new Date(user.createdAt).toDateString()}</Td>
                       <Td>{user.isAdmin === 'true' ? <CheckCircleIcon color='orange.500' /> : ''}</Td>
                       <Td>
-                       {/* Button allows user to delete other users */}
+                        {/* Button allows user to delete other users */}
                         <Button
                           disabled={user._id === userInfo.id}
                           variant='outline'
@@ -101,6 +102,15 @@ const UsersTab = () => {
               </Tbody>
             </Table>
           </TableContainer>
+          {/* Component for removing user if user is an admin */}
+          <ConfirmRemovalAlert
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onClose={onClose}
+            cancelRef={cancelRef}
+            itemToDelete={userToDelete}
+            deleteAction={deleteUser}
+          />
         </Box>
       )}
     </Box>

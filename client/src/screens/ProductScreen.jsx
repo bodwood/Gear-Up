@@ -24,7 +24,7 @@ import {
 import { MinusIcon, StarIcon, SmallAddIcon } from '@chakra-ui/icons';
 import { BiPackage, BiCheckShield, BiLeaf } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct, resetProductError, createProductReview } from '../redux/actions/productActions';
+import { getProduct, /*resetProductError,*/ createProductReview } from '../redux/actions/productActions';
 import { addCartItem } from '../redux/actions/cartActions';
 import { useEffect, useState } from 'react';
 import { TbRulerMeasure } from 'react-icons/tb';
@@ -52,7 +52,7 @@ const ProductScreen = () => {
     dispatch(getProduct(id));
     if (reviewSend) {
       toast({ description: 'Product review saved', status: 'success', isClosable: true });
-      dispatch(resetProductError());
+      // dispatch(resetProductError());
       setReviewBoxOpen(false);
     }
   }, [dispatch, id, cart, reviewSend]);
