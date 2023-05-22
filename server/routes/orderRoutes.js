@@ -29,6 +29,42 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 });
 
+//Getting orders
+const getOrder = async (req, res) => {
+  const order = await Order.find({});
+  res.json();
+};
+
+//Finds orders by id and removes such order (Express does this for us)
+//If the order is found, then return the order in json format.
+//If the order is not found, then throw a 404 error and a custom error message
+const deleteOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findByIdAndRemove(req.params.id);
+  if (order) {
+    res.json(order);
+  } else {
+    res.status(404);
+    throw new Error('Order not found');
+  }
+});
+
+//If the order is found then set isDelivered to true and update that order
+//If the order is not found then return a 404 error and throw a custom error message
+const setDelivered = asyncHandler(async (req, res) => {
+  const order = await order.findById(req.params.id);
+  if (order) {
+    order.isDelivered = true;
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error('Order could not be updated.');
+  }
+});
+
 orderRoutes.route('/').post(protectRoute, createOrder);
+orderRoutes.route('/:id').delete(protectRoute, admin, deleteOrder);
+orderRoutes.route('/:id').put(protectRoute, admin, setDelivered);
+orderRoutes.route('/').get(protectRoute, admin, getOrders);
 
 export default orderRoutes;

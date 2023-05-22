@@ -18,33 +18,35 @@ import {
   Wrap,
   useToast,
 } from '@chakra-ui/react';
+import { TbTruckDelivery } from 'react-icons/tb';
 import { CheckCircleIcon, DeleteIcon } from '@chakra-ui/icons';
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, deleteUser, resetErrorAndRemoval } from '../redux/actions/adminActions';
+import { getAllOrders, deleteOrder, setDelivered, resetErrorAndRemoval } from '../redux/actions/adminActions';
 import ConfirmRemovalAlert from './ConfirmRemovalAlert';
 
-const UsersTab = () => {
+const OrdersTab = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
-  const [userToDelete, setUserToDelete] = useState('');
+  const [orderToDelete, setOrderToDelete] = useState('');
   const dispatch = useDispatch();
   const admin = useSelector((state) => state.admin);
-  const user = useSelector((state) => state.user);
-  const { error, loading, userRemoval, userList } = admin;
-  const { userInfo } = user;
+  const { error, loading, orders, deliveredFlag, orderRemoval } = admin;
   const toast = useToast();
 
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(getAllOrders());
     dispatch(resetErrorAndRemoval());
-    if (userRemoval) {
-      toast({ description: 'User has been removed.', status: 'success', isClosable: true });
+    if (orderRemoval) {
+      toast({ description: 'Order has been removed.', status: 'success', isClosable: true });
     }
-  }, [userRemoval, dispatch, toast]);
+    if (deliveredFlag) {
+      toast({ description: 'Order has been set to delivered.', status: 'success', isClosable: true });
+    }
+  }, [orderRemoval, dispatch, toast, deliveredFlag]);
 
-  const openDeleteConfirmBox = (user) => {
-    setUserToDelete(user);
+  const openDeleteConfirmBox = (order) => {
+    setOrderToDelete(order);
     onOpen();
   };
   return (
@@ -68,34 +70,23 @@ const UsersTab = () => {
             <Table variant='simple'>
               <Thead>
                 <Tr>
+                  <Th>Date</Th>
                   <Th>Name</Th>
                   <Th>Email</Th>
-                  <Th>Registered</Th>
-                  <Th>Admin</Th>
-                  <Th>Action</Th>
+                  <Th>Shipping Info</Th>
+                  <Th>Items Ordered</Th>
+                  <Th>Payment Method</Th>
+                  <Th>Shipping Price</Th>
+                  <Th>Total</Th>
+                  <Th>Delivered</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                {userList &&
-                  userList.map((user) => (
-                    <Tr key={user._id}>
+                {orders &&
+                  orders.map((order) => (
+                    <Tr key={order._id}>
                       {/* Shows logged in user their info */}
-                      <Td>
                         {user.name} {user._id === userInfo._id ? '(You)' : ''}
-                      </Td>
-                      <Td>{user.email}</Td>
-                      <Td>{new Date(user.createdAt).toDateString()}</Td>
-                      <Td>{user.isAdmin === 'true' ? <CheckCircleIcon color='orange.500' /> : ''}</Td>
-                      <Td>
-                        {/* Button allows user to delete other users */}
-                        <Button
-                          disabled={user._id === userInfo._id}
-                          variant='outline'
-                          onClick={() => openDeleteConfirmBox(user)}
-                        >
-                          <DeleteIcon mr='5px' />
-                          Remove User
-                        </Button>
                       </Td>
                     </Tr>
                   ))}
@@ -117,4 +108,4 @@ const UsersTab = () => {
   );
 };
 
-export default UsersTab;
+export default OrdersTab;
