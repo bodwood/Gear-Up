@@ -51,7 +51,7 @@ const deleteOrder = asyncHandler(async (req, res) => {
 //If the order is found then set isDelivered to true and update that order
 //If the order is not found then return a 404 error and throw a custom error message
 const setDelivered = asyncHandler(async (req, res) => {
-  const order = await order.findById(req.params.id);
+  const order = await Order.findById(req.params.id);
   if (order) {
     order.isDelivered = true;
     const updatedOrder = await order.save();
