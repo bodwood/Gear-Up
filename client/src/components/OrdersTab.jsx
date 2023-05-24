@@ -17,6 +17,8 @@ import {
   AlertDescription,
   Wrap,
   useToast,
+  Text,
+  Flex,
 } from '@chakra-ui/react';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { CheckCircleIcon, DeleteIcon } from '@chakra-ui/icons';
@@ -49,6 +51,12 @@ const OrdersTab = () => {
     setOrderToDelete(order);
     onOpen();
   };
+
+  const onSetToDelivered = (order) => {
+   dispatch(resetErrorAndRemoval())
+   dispatch(setDelivered(order._id))
+  }
+
   return (
     <Box>
       {error && (
@@ -86,21 +94,58 @@ const OrdersTab = () => {
                   orders.map((order) => (
                     <Tr key={order._id}>
                       {/* Shows logged in user their info */}
-                        {user.name} {user._id === userInfo._id ? '(You)' : ''}
+                      <Td>{new Date(order.createdAt).toDateString()}</Td>
+                      <Td>{order.username}</Td>
+                      <Td>{order.email}</Td>
+                      <Td>
+                        <Text>
+                          <i>Address:</i> {order.shippingAddress.address}
+                        </Text>
+                        <Text>
+                          <i>City:</i> {order.shippingAddress.postalCode} {order.shippingAddress.city}
+                        </Text>
+                        <Text>
+                          <i>Country:</i> {order.shippingAddress.country}
+                        </Text>
+                      </Td>
+                      <Td>
+                        {order.orderItems.map((item) => (
+                          <Text>
+                            {item.qty} x {item.name}
+                          </Text>
+                        ))}
+                      </Td>
+                      <Td>{order.paymentMethod}</Td>
+                      <Td>${order.shippingPrice}</Td>
+                      <Td>${order.totalPrice}</Td>
+                      <Td>{order.isDelivered ? <CheckCircleIcon /> : 'Pending'}</Td>
+                      <Td>
+                        <Flex direction='column'>
+                          <Button variant='outline' onClick={() => openDeleteConfirmBox(order)}>
+                            <DeleteIcon mr='5px' />
+                            Remove Order
+                          </Button>
+                          {!order.isDelivered && (
+                            <Button mt='4px' variant='outline' onClick={() => onSetToDelivered(order)}>
+                              <TbTruckDelivery />
+                              <Text ml='5px'>Delivered</Text>
+                            </Button>
+                          )}
+                        </Flex>
                       </Td>
                     </Tr>
                   ))}
               </Tbody>
             </Table>
           </TableContainer>
-          {/* Component for removing user if user is an admin */}
+          {/* Component for removing user if order is an admin */}
           <ConfirmRemovalAlert
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
             cancelRef={cancelRef}
-            itemToDelete={userToDelete}
-            deleteAction={deleteUser}
+            itemToDelete={orderToDelete}
+            deleteAction={deleteOrder}
           />
         </Box>
       )}

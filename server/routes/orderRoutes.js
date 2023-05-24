@@ -1,7 +1,7 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 import Order from '../models/Order.js';
-import { protectRoute } from '../middleware/authMiddleware.js';
+import { admin, protectRoute } from '../middleware/authMiddleware.js';
 
 const orderRoutes = express.Router();
 
@@ -30,9 +30,9 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 //Getting orders
-const getOrder = async (req, res) => {
-  const order = await Order.find({});
-  res.json();
+const getOrders = async (req, res) => {
+  const orders = await Order.find({});
+  res.json(orders);
 };
 
 //Finds orders by id and removes such order (Express does this for us)
