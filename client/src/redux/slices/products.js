@@ -6,7 +6,7 @@ export const initialState = {
   products: [],
   product: null,
   reviewSend: false,
-  
+  productUpdate: false,
 };
 
 export const productsSlice = createSlice({
@@ -38,6 +38,7 @@ export const productsSlice = createSlice({
     resetError: (state) => {
       state.error = null;
       state.reviewSend = false;
+      state.productUpdate = false;
     },
     setProductUpdateFlag: (state) => {
       state.productUpdate = true;
