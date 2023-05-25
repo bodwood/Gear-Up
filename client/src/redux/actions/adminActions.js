@@ -1,5 +1,15 @@
 import axios from 'axios';
-import { getUsers, userDelete, resetError, setError, setLoading, orderDelete, setDeliveredFlag, getOrders } from '../slices/admin';
+import {
+  getUsers,
+  userDelete,
+  resetError,
+  setError,
+  setLoading,
+  orderDelete,
+  setDeliveredFlag,
+  getOrders,
+} from '../slices/admin';
+import { setProductUpdateFlag, setProducts } from '../slices/products';
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
@@ -110,7 +120,6 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
   }
 };
 
-
 export const setDelivered = (id) => async (dispatch, getState) => {
   dispatch(setLoading(true));
   const {
@@ -124,7 +133,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     };
-   await axios.put(`api/orders/${id}`, {}, config);
+    await axios.put(`api/orders/${id}`, {}, config);
     dispatch(setDeliveredFlag());
   } catch (error) {
     dispatch(
@@ -139,6 +148,40 @@ export const setDelivered = (id) => async (dispatch, getState) => {
   }
 };
 
-export const resetErrorAndRemoval = () => async(dispatch) => {
- dispatch(resetError())
-}
+export const resetErrorAndRemoval = () => async (dispatch) => {
+  dispatch(resetError());
+};
+
+//update a product
+export const updateProduct =
+  (id, name, price, description, image, brand, category, stock, productIsNew) => async (dispatch, getState) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+          'Content-Type': 'application/json',
+        },
+      };
+      const { data } = await axios.put(
+        `api/products`,
+        { brand, category, stock, price, id, productIsNew, description, image },
+        config
+      );
+      dispatch(setProducts(data));
+      dispatch(setProductUpdateFlag());
+    } catch (error) {
+      dispatch(
+        setError(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+            ? error.message
+            : 'Product could not be updated.'
+        )
+      );
+    }
+  };
+
+//delete a product
+
+//upload a product
